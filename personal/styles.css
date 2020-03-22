@@ -1,0 +1,10 @@
+body {background-color: LightGray}
+	h1 {color: blue;}
+	p {color: tomato; font-size: 150%}
+	pre {background-color: tomato; font-family: courier;}
+	ul {text-align: center;
+		border: 2px dotted red; 
+		margin: 30px}
+	a {border: 2px dotted tomato; padding: 10px}
+	#p1 {color: red}
+	ul.multiline {background-color: grey}
