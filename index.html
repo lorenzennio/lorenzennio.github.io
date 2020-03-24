@@ -5,6 +5,10 @@
 <meta name="author" content="Lorenz Gaertner">
 <meta name="viewport" content="width=device-width, 
 		initial-scale=1.0">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <link rel="stylesheet" type="text/css" href="styles.css">
 <body>
 
@@ -30,14 +34,257 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 <p id="cv" class="section">cv </p>
+<p class="cvsection">education</p>
+<ul class="cvlist">
+	<li>
+		Physics, MSc <br>
+		<p class="cvsubsection"> 
+			Ludwig Maximilians University, Munich
+			<span style="float:right;">
+				2018 – present
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				One of the program’s strengths, apart from working with world leading researchers, is the freedom to design
+				your own course structure, tailored to interests.
+			</li>
+			<li>
+				The LMU and Munich in general provide an excelent study and research environment, due to the versatile
+				scientific community.
+			</li>
+			<li>
+				Specializing in the direction of quantum effects in curved spacetime. Especially, focussing on spacetimes relevant for cosmological puroses.
+			</li>
+			<li>
+				Additionally, I am concentrating on optimizing ability to contribute to research level coding projects. I am
+				taking universally valuable courses, such as collaborative software development. Due to its complexity, these skills are vital for any computational work nowadays.
+			</li>
+		</ul>
+	</li>
+	<br>
+	<li>Physics with Theoretical Physics, BSc
+		<span style="float:right;">
+			First Class, 86.7%
+		</span><br>
+		<p class="cvsubsection"> 
+			University of Manchester, Manchester, UK
+			<span style="float:right;">
+				2015 – 2018
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				Developing theoretical and experimental skills in various fields of physics.
+			</li>
+			<li>
+				Specializing in theoretical and more mathematically involved courses. This especially enhanced my skills of reducing complex problems to a mathematical basis.
+			</li>
+			<li>
+				Regularly presenting experimental results in interview form.
+			</li>
+			<li>
+				Due to coming from a completely different school system, catching up to the UK standard of A level physics, during first year, required studying 50-60h/week. I still performed at the very to of my year, which is a good example of my dedication and motivation.
+			</li>
+			<li>
+				The University of Manchester physics department is outstanding not only due to its academic excellence and great professors, but also because of its friendly and adaptive learning environment.
+			</li>
+			<li>
+				Dissertation topic: <b>Quantum Teleportation</b>
+				<ul style="">
+					<li>
+						supervised by Dr. Judith McGovern
+					</li>
+					<li>
+						Independent research project on the fundamentals of quantum mechanics, the properties arising from the nature of superposition and their limitations.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Final experimental project: <b>Matter / Antimatter asymmetries at the LHCb</b>
+				<ul style="">
+					<li>
+						supervised by Prof. Chris Parkes, Dr. Fedor Bezrukov and Dr. Marco Gersabeck
+					</li>
+					<li>
+						Investigated CP violation in the beauty quark sector using advanced programming (C++, ROOT) and data analysis methods.
+					</li>
+					<li>
+						Performed a detailed analysis to identify and quantify systematic errors.
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<br>
+	<li>High School
+		<span style="float:right;">
+			Average Result: 1.0
+		</span><br>
+		<p class="cvsubsection"> 
+			Stubenbastei 6-8, Bundesgymnasium und Realgymnasium, Vienna, AT
+			<span style="float:right;">
+				2010 – 2014
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				Grades: Mathematics: 1.0, Physics: 1.0, Descriptive Geometry: 1.0, English: 1.0, German: 1.0
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<p class="cvsection">work experience</p>
+<ul class="cvlist">
+	<!-- QMII TUTOR-->
+	<li>Background event classification for Belle II, using neural networks<br>
+		<p class="cvsubsection"> 
+			with Prof. Thomas Kuhr, Ludwig Maximilians University, Munich, DE
+			<span style="float:right;">
+				June – July 2018
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				I worked on building a neural network to classify simulated particle collision data, in the decay channel
+				\(B \to K^∗ \nu \bar{\nu}. \)
+				The goal of the project is to replace the computationally very expensive detector simulation, particle reconstruction and analysis, which is the current standard.
+			</li>
+			<li>
+				As a newcomer to the field of neural networks, I independently taught myself the necessary skills to build very task specific and efficient neural networks.
+			</li>
+			<li>
+				As one of the few people working on this project, my ideas and choices very much shaped the direction of the project.
+			</li>
+			<li>
+				By the end of my internship, I had designed a completely new neural network. My work lead to an increase in classification accuracy by over 10%, compared to the best existing network for this task.
+			</li>
+		</ul>
+	</li>
+	<br>
+	<li>redMaPPer Galaxy Cluster finding Algorithm<br>
+		<p class="cvsubsection"> 
+			with Dr. Eli Rykoff, SLAC (Stanford Linear Accelerator Center), Stanford, USA
+			<span style="float:right;">
+				June – July 2017
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				Introduced myself to new areas of physics, many advanced error analysis and programming techniques, necessary for galaxy cluster finding.
+			</li>
+			<li>
+				Familiarized myself to and worked with highly professional, scientific code.
+			</li>
+			<li>
+				Introduced myself to a new programming language, IDL, in a very short time.
+			</li>
+			<li>
+				Ported crucial parts of the existing IDL redMaPPer code to Python, rewriting it for optimal performance. This task required high level object orientated programming skills.
+			</li>
+			<li>
+				Enabled the Python redMaPPer code to compute cluster richnesses and redshifts, account for masking effects and compute uncertainties.
+			</li>
+		</ul>
+	</li>
+	<br>
+	<li>Gravitational Lensing<br>
+		<p class="cvsubsection"> 
+			with Prof. Sarah Bridle, University of Manchester, Manchester, UK
+			<span style="float:right;">
+				July 2016
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				Deepening understanding of gravitational lensing and programming independently.
+			</li>
+			<li>
+				Modeling specific strong lenses, to a degree, never done before.
+			</li>
+			<li>
+				Extracting valuable information from computed models, to learn about these lenses.
+			</li>
+		</ul>
+	</li>
+	<br>
+	<li>Paramedic: Arbeiter-Samariter-Bund &Ouml;sterreichs<br>
+		<p class="cvsubsection"> 
+			Floridsdorf-Donaustadt, Vienna, AT
+			<span style="float:right;">
+				2014 – 2015
+			</span>
+		</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				Intense training period and high workload (40-60h/week), including night shifts and weekends.
+			</li>
+			<li>
+				Great responsibility with people’s lives depending on me.
+			</li>
+			<li>
+				Dealing with high pressure situations professionally.
+			</li>
+			<li>
+				Strengthened my ability to work in a small team efficiently.
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<p class="cvsection">awards</p>
+<ul class="cvlist">
+	<li>Franz Mandl Prize<br>
+			<p class="cvsubsection"> 
+				University of Manchester, Manchester, UK
+				<span style="float:right;">
+					June 2018
+				</span>
+			</p>
+	</li>
+	<li>
+		<ul class="cvlist sub">
+			<li>
+				The prize is awarded to the best BSc theoretical physics graduate of every year, for theoretical work carried out in the final year of the degree program.
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<p class="cvsection">additional skills and interests</p>
+<ul class="cvlist sub">
+	<li>
+		<i>Languages</i><br>
+		German (native), English fluently; basics in  Italian (A2), French
+	</li>
+	<li>
+		<i>Programming</i><br>
+		Python, C++, Mathematica, Latex, ROOT and Keras;
+		basic knowledge of HTML, CSS, MatLab and IDL
+	</li>
+	<li>
+		<i>Sport</i><br>
+		Road cycling, Bouldering, Climbing, Hiking, Snowboarding, Yoga
+	</li>
+</ul>
 <br>
 <br>
 <br>
@@ -65,19 +312,10 @@
 <br>
 <br>
 
-<a class="button" href="https://theuselessweb.com/">Hit me!</a> 
-<!--<ul class="multiline">
-	<li><mark>Enno</mark></li>
-	<li><strong>Leo</strong> <b>Leo</b></li>
-	<li><del>Lorenz</del></li>
-</ul>
-<pre class="multiline">
-	This is line one.
-
-	Followed by line three.
-
-	<blockquote cite="http://www.google.com">I am here</blockquote>
-</pre>
-<abbr title="be right back"> brb </abbr> -->
+<a class="button" href="http://endless.horse/">
+	<p class="button">	
+		&copy; Lorenz G&auml;rtner 
+	</p>
+</a> 
 </body>
 </html>
