@@ -1,15 +1,67 @@
-body {background-color: #d3f7f9}
-	h1 {color: blue;}
-	p {color: tomato; font-size: 150%}
-	pre {background-color: tomato; font-family: courier;}
-	ul {text-align: center;
-		border: 2px dotted red; 
-		margin: 30px}
-	a {border: 2px dotted tomato; padding: 10px}
-	#p1 {color: tomato}
-	ul.multiline {background-color: grey}
-	a.button {position: sticky;
-					appearance: button;
-					-webkit-appearance: button;
-					-moz-appearance: button;
-	}
+body {
+	background-color: white;
+	font-family:courier new
+}
+.right{
+	float:right!important
+}
+.padding{
+	padding:10px 10px!important
+}
+.top{
+	position:fixed;
+	width:100%;
+	z-index:1;
+	left:0;
+	top:0
+}
+.section{
+	font-size: 20px;
+	background-color: tomato;
+	display: table;
+	color: white;
+}
+.right{float:right!important}
+.padding{padding:10px 10px!important}
+.top{position:fixed;width:100%;z-index:1;left:0;top:0}
+
+.dropbtn {
+  background-color: white;
+  color: grey;
+  padding: 16px;
+  font-size: 16px;
+  font-family:courier new;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f9f9f9;
+  min-width: 140px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: tomato}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: tomato;
+}
+
+
