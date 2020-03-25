@@ -1,6 +1,6 @@
 body {
 	background-color: white;
-	font-family:courier new
+	font-family: courier new
 }
 .right{
 	float:right!important
@@ -16,18 +16,18 @@ body {
 	top:0
 }
 .section{
-	font-size: 20px;
+	font-size: 22px;
 	background-color: tomato;
 	display: table;
 	color: white;
 }
 .cvsection{
-	font-size: 18px;
+	font-size: 20px;
 	background-color: tomato;
 	display: ;
-	color: black;
+	color: white;
 	text-align: right;
-	opacity: 0.7;
+	opacity: 0.9;
 }
 
 .cvlist{
@@ -36,9 +36,13 @@ body {
 }
 .cvlist.sub{
 	list-style-type: circle;
-	font-size: 12px;
+	font-size: 14px;
 }
 .cvsubsection{
+	font-size: 14px;
+}
+
+.cvp{
 	font-size: 14px;
 }
 
@@ -46,7 +50,7 @@ body {
   background-color: white;
   color: grey;
   padding: 16px;
-  font-size: 16px;
+  font-size: 18px;
   font-family:courier new;
   border: none;
 }
@@ -87,3 +91,4 @@ body {
 	font-size: 8px;
 	text-align: center;
 }
+
