@@ -1,0 +1,549 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Background event classification for Belle II | Lorenz Gaertner</title>
+<meta name="description" content="In this project I used neural networks to classify EvtGen simulated data into signal and background. The goal was to investigate the possibility of bypassing the expensive Geant4 detector simulation and following analysis. This project was done in the realms of the Belle-II experiment, but is applicable to all of experimental particle physics. It was a very new direction in the collaboration, where I helped to develop one of the first convolutional neutral networks for classification. By restructuring the network layers and managing to constructively input additional data (such as the decay string), I managed to improve the accuracy by over 10% and set the groundwork for future contributions. The project is still ongoing and being constantly improved.">
+
+
+  <meta name="author" content="Lorenz Gaertner">
+  
+  <meta property="article:author" content="Lorenz Gaertner">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Lorenz Gaertner">
+<meta property="og:title" content="Background event classification for Belle II">
+<meta property="og:url" content="http://localhost:4000/background-event-classification/">
+
+
+  <meta property="og:description" content="In this project I used neural networks to classify EvtGen simulated data into signal and background. The goal was to investigate the possibility of bypassing the expensive Geant4 detector simulation and following analysis. This project was done in the realms of the Belle-II experiment, but is applicable to all of experimental particle physics. It was a very new direction in the collaboration, where I helped to develop one of the first convolutional neutral networks for classification. By restructuring the network layers and managing to constructively input additional data (such as the decay string), I managed to improve the accuracy by over 10% and set the groundwork for future contributions. The project is still ongoing and being constantly improved.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/plogol.png">
+
+
+
+  <meta name="twitter:site" content="@lorenzennio">
+  <meta name="twitter:title" content="Background event classification for Belle II">
+  <meta name="twitter:description" content="In this project I used neural networks to classify EvtGen simulated data into signal and background. The goal was to investigate the possibility of bypassing the expensive Geant4 detector simulation and following analysis. This project was done in the realms of the Belle-II experiment, but is applicable to all of experimental particle physics. It was a very new direction in the collaboration, where I helped to develop one of the first convolutional neutral networks for classification. By restructuring the network layers and managing to constructively input additional data (such as the decay string), I managed to improve the accuracy by over 10% and set the groundwork for future contributions. The project is still ongoing and being constantly improved.">
+  <meta name="twitter:url" content="http://localhost:4000/background-event-classification/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/assets/images/plogol.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2018-07-31T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/background-event-classification/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Lorenz Gaertner",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://www.linkedin.com/in/lorenz-gaertner/","https://twitter.com/lorenzennio","https://github.com/lorenzennio"]
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Lorenz Gaertner Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single-post">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/plogol2-white.png" alt="Lorenz Gaertner"></a>
+        
+        <a class="site-title" href="/">
+          Lorenz Gaertner
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">about</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/">projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/cv/">cv</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Background event classification for Belle II</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/port.jpg" alt="Lorenz Gaertner" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Lorenz Gaertner</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am a <strong>theoretical and computational physicist</strong> interested in high energy physics, gravity and cosmology.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">vienna, at</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:lorenz.gaertner@gmail.com" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-envelope" aria-hidden="true"></i><span class="label">mail</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/lorenzennio" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">github</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/lorenz-gaertner/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin-in" aria-hidden="true"></i><span class="label">linkedin</span></a></li>
+          
+        
+          
+            <li><a href="https://twitter.com/lorenzennio" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">twitter</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Background event classification for Belle II">
+    <meta itemprop="description" content="In this project I used neural networks to classify EvtGen simulated data into signal and background. The goal was to investigate the possibility of bypassing the expensive Geant4 detector simulation and following analysis. This project was done in the realms of the Belle-II experiment, but is applicable to all of experimental particle physics. It was a very new direction in the collaboration, where I helped to develop one of the first convolutional neutral networks for classification. By restructuring the network layers and managing to constructively input additional data (such as the decay string), I managed to improve the accuracy by over 10% and set the groundwork for future contributions. The project is still ongoing and being constantly improved.">
+    <meta itemprop="datePublished" content="2018-07-31T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Background event classification for Belle II
+</h1>
+          
+
+
+        </header>
+      
+
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>In this project I used neural networks to classify <em>EvtGen</em> simulated data into signal and background. The goal was to investigate the possibility of bypassing the expensive <em>Geant4</em> detector simulation and following analysis. This project was done in the realms of the Belle-II experiment, but is applicable to all of experimental particle physics. It was a very new direction in the collaboration, where I helped to develop one of the first convolutional neutral networks for classification. By restructuring the network layers and managing to constructively input additional data (such as the decay string), I managed to improve the accuracy by over 10% and set the groundwork for future contributions. The project is still ongoing and being constantly improved.</p>
+
+<p>During this project I learned about neural networks, some common design practises and options for handling and pre-processing data. I used <a href="https://keras.io/">Keras</a> and other parts of <a href="https://www.tensorflow.org/">Tensorflow</a> to embed relevant data from the simulation and develop a convolutional neural network for classification of signal and background in particle collisions. Furthermore, I learned about the simulation side of particle physics and some details about general data handling.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-07-31T00:00:00+02:00">July 31, 2018</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?via=lorenzennio&text=Background+event+classification+for+Belle+II%20http%3A%2F%2Flocalhost%3A4000%2Fbackground-event-classification%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbackground-event-classification%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fbackground-event-classification%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/CP-violation/" class="pagination--pager" title="CP violation in charmless B meson decays at the LHCb
+">Previous</a>
+    
+    
+      <a href="/binary-disk-simulations/" class="pagination--pager" title="Circumbinary disk simulations
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <div align="center" style="margin: 1em 0;">
+        <ins class="adsbygoogle"
+              style="display:block; border-bottom: initial;"
+              data-ad-client="ca-pub-7328585512091257"
+              data-ad-slot="3049671934"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+      </div>
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/binary-disk-simulations/" rel="permalink">Circumbinary disk simulations
+</a>
+      
+    </h2>
+    
+
+
+    
+	     <center><img src="/assets/images/cbd.out1.00086_temp.png" width="50%"/></center>
+	  
+    <br>
+    <p class="archive__item-excerpt" itemprop="description">I simulate the gas disk of a binary star system to investigate temperature distributions and compare them to the specific physical system IRAS 16293-2422 A. I run a parallelized, static mesh refined simulation of the system using the magnetohydrodynamics code...</p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/CP-violation/" rel="permalink">CP violation in charmless B meson decays at the LHCb
+</a>
+      
+    </h2>
+    
+
+
+    
+	     <center><img src="/assets/images/CP_massB_pm.png" width="50%"/></center>
+	  
+    <br>
+    <p class="archive__item-excerpt" itemprop="description">Following in the footsteps of the LHCb collaboration, I worked on a project to validate the discovered evidence for CP violation in charmless, B meson decays. I developed a data analysis framework using ROOT to analyse the experimental data obtained...</p>
+
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+      <div align="center" style="margin: 1em 0;">
+        <ins class="adsbygoogle"
+             style="display:block; border-bottom: initial;"
+             data-ad-client="ca-pub-7328585512091257"
+             data-ad-slot="3049671934"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:lorenz.gaertner@gmail.com" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-envelope" aria-hidden="true"></i> mail</a></li>
+        
+      
+        
+          <li><a href="https://github.com/lorenzennio" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> github</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/lorenz-gaertner/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin-in" aria-hidden="true"></i> linkedin</a></li>
+        
+      
+        
+          <li><a href="https://twitter.com/lorenzennio" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> twitter</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Lorenz Gaertner. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+    <style>
+      .google-auto-placed {
+        margin: 2em auto;
+      }
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  </body>
+</html>
