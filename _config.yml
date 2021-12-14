@@ -90,10 +90,10 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider               : "google" # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          :  # Replace this with your ID, or delete
-    anonymize_ip         : true
+    tracking_id          :  G-TRHGWZ7QQK # Replace this with your ID, or delete
+    #anonymize_ip         : true
 
 
 # Site Author
