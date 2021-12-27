@@ -1,6 +1,6 @@
 ---
 title:  "On the backreaction of quantum scalar fields on the de Sitter spacetime"
-thumbnail:
+thumbnail: /assets/images/dSconformal.png
 ---
 The questions I wanted to address in my master thesis were:
 *What effect do the particles, created during the expansion of our universe, have on the cosmological
@@ -12,7 +12,7 @@ We then look for the breaking of this isometry in the loop corrections of a self
 Finally, we break de Sitter isometry explicitly by introducing a scalar metric perturbation to the de Sitter geometry. We introduce a free massive scalar field to our spacetime and estimate the backreaction by solving for the perturbation.
 Our results show that in the short wavelength (UV) regime the largest contribution to the metric perturbation decays while oscillating in a similar way to gravitational wave modes. In the long wavelength (IR) regime we find that one part of the solution significantly grows and these perturbations can no longer be considered small.
 
-Have a look at my thesis here:
+### Have a look at my thesis here:
 <object data="/assets/pdfs/Thesis.pdf" type="application/pdf" width="100%" height="100%">
     <embed src="/assets/pdfs/Thesis.pdf" type="application/pdf">
         <p>This browser does not support PDF display. Please download the PDF to view it.</p>
