@@ -16,3 +16,11 @@ Active supporter of open source and open science.
 Excited about climbing, mountaineering and fighting climate change.
 
 ---
+
+## News
+
+<ul>
+{% for item in site.data.news %}
+  <li><strong>{{ item.date | date: "%B %Y" }}</strong> &mdash; {{ item.text }}</li>
+{% endfor %}
+</ul>

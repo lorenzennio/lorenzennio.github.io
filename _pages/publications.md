@@ -1,0 +1,30 @@
+---
+title: "publications & talks"
+permalink: /publications/
+layout: single
+author_profile: true
+---
+
+## Publications
+
+<ul>
+{% for pub in site.data.publications %}
+  <li>
+    <strong>{{ pub.title }}</strong><br>
+    {{ pub.authors }}, <em>{{ pub.venue }}</em> ({{ pub.date | date: "%Y" }})
+    {% if pub.link %} &mdash; <a href="{{ pub.link }}">link</a>{% endif %}
+  </li>
+{% endfor %}
+</ul>
+
+## Talks
+
+<ul>
+{% for talk in site.data.talks %}
+  <li>
+    <strong>{{ talk.title }}</strong><br>
+    {{ talk.venue }} ({{ talk.date | date: "%Y" }})
+    {% if talk.link %} &mdash; <a href="{{ talk.link }}">link</a>{% endif %}
+  </li>
+{% endfor %}
+</ul>
