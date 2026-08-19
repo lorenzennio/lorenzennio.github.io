@@ -11,7 +11,7 @@ $code-background-color: mix(#000, $background-color, 8%) !default;
 $code-background-color-dark: mix(#000, $background-color, 12%) !default;
 $form-background-color: mix(#000, $background-color, 5%) !default;
 $footer-background-color: mix(#000, $background-color, 8%) !default;
-$link-color: mix($primary-color, $text-color, 40%) !default;
+$link-color: $primary-color !default;
 $link-color-hover: mix(#000, $link-color, 25%) !default;
 $link-color-visited: mix(#fff, $link-color, 25%) !default;
 $masthead-link-color: $text-color !default;
@@ -27,4 +27,24 @@ $navicon-link-color-hover: mix(#fff, $background-color, 30%) !default;
 
 .ais-search-box .ais-search-box--input {
   background-color: $form-background-color;
+}
+
+// Dark/light toggle button, injected by assets/js/theme-init.js.
+// See _sass/minimal-mistakes/skins/_dark.scss for why this lives here
+// rather than in _masthead.scss.
+.theme-toggle {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 2rem; // matches theme's $nav-toggle-height, not yet defined when skins load
+  border: 0;
+  outline: none;
+  color: $primary-color;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+
+  &:hover {
+    color: mix(#000, $primary-color, 25%);
+  }
 }

@@ -44,7 +44,7 @@
 
     var button = document.createElement("button");
     button.type = "button";
-    button.className = "search__toggle theme-toggle";
+    button.className = "theme-toggle";
     button.setAttribute("aria-label", "Toggle dark / light theme");
     button.innerHTML = '<i class="fas ' + (currentTheme === "light" ? "fa-moon" : "fa-sun") + '"></i>';
 
