@@ -1,6 +1,37 @@
 # Publications shown on the publications & talks page, newest first.
-- title: "Example publication title"
-  authors: "L. Gaertner et al."
-  venue: "Journal or conference name"
-  date: 2024-01-01
-  link: "https://example.com"
+# Sourced from /home/lorenz/work/CV/references.bib.
+- title: "Joint LHCb–Belle II prospects to constrain new physics in B→D(*)τν"
+  authors: "J. Albrecht, F. Bernlochner, M. Colonna, L. Gärtner, A. Mathad, B. Mitreska, M. Prim, I. Tsaklidis"
+  venue: "Eur. Phys. J. C 86, 718"
+  date: 2026-04-01
+  link: "https://doi.org/10.1140/epjc/s10052-026-15908-5"
+
+- title: "Constraints on invisible B+→K+X decays from the Belle II B+→K+νν̄ measurement"
+  authors: "L. Gärtner, N. Krug, T. Kuhr, M. A. Schmidt, S. Stefkova, B. Yabsley"
+  venue: "Phys. Rev. D 114, 032003"
+  date: 2026-02-01
+  link: "https://doi.org/10.1103/ggtk-gkx4"
+
+- title: "Model-agnostic likelihood for the reinterpretation of the B+→K+νν̄ measurement at Belle II"
+  authors: "M. Abumusabh et al. (Belle II Collaboration)"
+  venue: "Phys. Rev. D 112, 092016"
+  date: 2025-07-01
+  link: "https://doi.org/10.1103/pr66-sd36"
+
+- title: "Reinterpretation and preservation of data and analyses in HEP"
+  authors: "J. Butterworth et al. (LHC Reinterpretation Forum)"
+  venue: "arXiv:2504.00256"
+  date: 2025-03-01
+  link: "https://arxiv.org/abs/2504.00256"
+
+- title: "Accelerating discovery: model-agnostic likelihoods for the reinterpretation of particle physics results and their application to the Belle II B+→K+νν̄ measurement"
+  authors: "L. Gärtner"
+  venue: "PhD thesis, Ludwig-Maximilians-Universität München"
+  date: 2025-01-01
+  link: "https://doi.org/10.5282/edoc.36550"
+
+- title: "Constructing model-agnostic likelihoods, a method for the reinterpretation of particle physics results"
+  authors: "L. Gärtner, N. Hartmann, L. Heinrich, M. Horstmann, T. Kuhr, M. Reboud, S. Stefkova, D. van Dyk"
+  venue: "Eur. Phys. J. C 84, 693"
+  date: 2024-02-01
+  link: "https://doi.org/10.1140/epjc/s10052-024-13038-4"

@@ -1,5 +1,43 @@
 # Talks shown on the publications & talks page, newest first.
-- title: "Example talk title"
-  venue: "Conference or seminar name"
-  date: 2024-01-01
-  link: "https://example.com"
+# Titles/dates verified against the linked Indico contribution pages.
+- title: "Measurements of electroweak penguin B decays with missing energy at Belle and Belle II"
+  venue: "ICHEP 2026"
+  date: 2026-08-01
+  link: "https://indico.cern.ch/event/1522800/contributions/6982707/"
+
+- title: "B→K νν̄ reinterpretation"
+  venue: "Belle II Germany Meeting"
+  date: 2025-09-09
+  link: "https://indico.belle2.org/event/14576/contributions/98735/"
+
+- title: "Efficient reinterpretation with model agnostic likelihoods"
+  venue: "Belle II Physics Week"
+  date: 2024-10-16
+  link: "https://indico.belle2.org/event/12273/contributions/79673/"
+
+- title: "Constructing model-agnostic likelihoods, a method for the reinterpretation of particle physics results"
+  venue: "PyHEP – \"Python in HEP\""
+  date: 2024-07-04
+  link: "https://indico.cern.ch/event/1384010/contributions/5994294/"
+
+- title: "Constructing model-agnostic likelihoods, a method for the reinterpretation of particle physics results"
+  venue: "WLCG/HSF Workshop"
+  date: 2024-05-16
+  link: "https://indico.cern.ch/event/1369601/contributions/5867792/"
+
+- title: "A model-independent likelihood function for the Belle II B+→K+νν̄ analysis"
+  venue: "IRN Terascale"
+  date: 2023-10-26
+  link: "https://indico.in2p3.fr/event/30546/contributions/128802/"
+
+- title: "A model-independent likelihood function for the Belle II B+→K+νν̄ analysis"
+  venue: "(Re)interpretation of the LHC results for new physics"
+  date: 2023-08-30
+  link: "https://conference.ippp.dur.ac.uk/event/1178/contributions/6443/"
+
+# Date/title not verified -- conferences.iaea.org blocked the fetch (403).
+# Fill in manually if you have the exact date.
+- title: "Fission-Fusion Synergies"
+  venue: "IAEA Technical Meeting on Fission-Fusion Synergies"
+  date:
+  link: "https://conferences.iaea.org/event/285/contributions/22008/attachments/11960/19453/1.00-Virgili.pdf"

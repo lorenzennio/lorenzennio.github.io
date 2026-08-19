@@ -23,7 +23,7 @@ author_profile: true
 {% for talk in site.data.talks %}
   <li>
     <strong>{{ talk.title }}</strong><br>
-    {{ talk.venue }} ({{ talk.date | date: "%Y" }})
+    {{ talk.venue }}{% if talk.date %} ({{ talk.date | date: "%Y" }}){% endif %}
     {% if talk.link %} &mdash; <a href="{{ talk.link }}">link</a>{% endif %}
   </li>
 {% endfor %}

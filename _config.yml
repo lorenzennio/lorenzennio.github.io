@@ -16,11 +16,11 @@ head_scripts:
 
 # Site Settings
 locale                   : "en-GB"
-title                    : "Lorenz Gaertner"
+title                    : "Lorenz Gärtner"
 title_separator          : "|"
 subtitle                 :
-name                     : &name "Lorenz Gaertner" # &name is a YAML anchor which can be *referenced later
-description              : &description "The personal web page of Lorenz Gaertner, a theoretical and computational physicist."
+name                     : &name "Lorenz Gärtner" # &name is a YAML anchor which can be *referenced later
+description              : &description "The personal web page of Lorenz Gärtner, a theoretical and computational physicist."
 url                      : #"https://mmistakes.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "lorenzennio/lorenzgaertner"
