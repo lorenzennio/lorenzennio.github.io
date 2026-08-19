@@ -104,7 +104,7 @@ author:
   location         : "vienna, at"
   links:
     - label: "mail"
-      icon: "fab fa-fw fa-envelope"
+      icon: "fas fa-fw fa-envelope"
       url: "mailto:lorenz.gaertner@gmail.com"
     - label: "github"
       icon: "fab fa-fw fa-github"
@@ -124,7 +124,7 @@ author:
 footer:
   links:
     - label: "mail"
-      icon: "fab fa-fw fa-envelope"
+      icon: "fas fa-fw fa-envelope"
       url: "mailto:lorenz.gaertner@gmail.com"
     - label: "github"
       icon: "fab fa-fw fa-github"
