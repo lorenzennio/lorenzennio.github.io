@@ -10,3 +10,5 @@ thumbnail: /assets/images/knunu-dm-sm-widths.png
 <center><img src="/assets/images/knunu-dm-sm-widths.png" width="70%"/></center>
 
 <p>Reinterpreting the measurement as a search for a dark-sector mediator \(X\): posterior on its mass \(m_X\) and coupling \(\mu_X\), for two assumed decay widths \(\Gamma_X\).</p>
+
+<p><a href="https://github.com/lorenzennio/knunu-bkx-reinterpretation">Try your own reinterpretation</a> &mdash; a minimal starting point for fitting the model at two fixed widths.</p>

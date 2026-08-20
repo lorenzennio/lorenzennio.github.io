@@ -10,3 +10,5 @@ thumbnail: /assets/images/knunu-full-spectrum.png
 <center><img src="/assets/images/knunu-full-spectrum.png" width="70%"/></center>
 
 <p>Posterior constraints on the effective Wilson coefficients of a general \(b\to s\nu\bar\nu\) contact interaction, from the public likelihood applied to the full \(B^+\to K^+\nu\bar\nu\) measurement.</p>
+
+<p><a href="https://github.com/lorenzennio/knunu-reinterpretation-mini">Try your own reinterpretation</a> &mdash; a minimal worked example, from loading the public likelihood to a full WET fit.</p>

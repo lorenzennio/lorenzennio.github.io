@@ -5,6 +5,12 @@
 - date: 2026-08-01
   text: 'Excited to have spoken at <a href="https://indico.cern.ch/event/1522800/contributions/6982707/">ICHEP 2026</a>.'
 
+- date: 2026-06-03
+  text: '<a href="https://github.com/lorenzennio/knunu-bkx-reinterpretation">Try your own reinterpretation</a> of the \(B^+\to K^+X\) dark-sector search &mdash; a minimal starting point for fitting the model at two fixed widths.'
+
+- date: 2026-05-07
+  text: '<a href="https://github.com/lorenzennio/knunu-reinterpretation-mini">Try your own reinterpretation</a> of the Belle II \(B^+\to K^+\nu\bar\nu\) measurement &mdash; a minimal worked example, from loading the public likelihood to a full WET fit.'
+
 - date: 2026-04-01
   text: 'New paper published: "Joint LHCb–Belle II prospects to constrain new physics in \(B\to D^{(*)}\tau\nu\)", <a href="https://doi.org/10.1140/epjc/s10052-026-15908-5">Eur. Phys. J. C 86, 718</a>.'
 
