@@ -1,18 +1,18 @@
 # Publications shown on the publications & talks page, newest first.
 # Sourced from /home/lorenz/work/CV/references.bib.
-- title: 'Joint LHCb–Belle II prospects to constrain new physics in $B\to D^{(*)}\tau\nu$'
+- title: 'Joint LHCb–Belle II prospects to constrain new physics in \(B\to D^{(*)}\tau\nu\)'
   authors: "J. Albrecht, F. Bernlochner, M. Colonna, L. Gärtner, A. Mathad, B. Mitreska, M. Prim, I. Tsaklidis"
   venue: "Eur. Phys. J. C 86, 718"
   date: 2026-04-01
   link: "https://doi.org/10.1140/epjc/s10052-026-15908-5"
 
-- title: 'Constraints on invisible $B^+\to K^+X$ decays from the Belle II $B^+\to K^+\nu\bar\nu$ measurement'
+- title: 'Constraints on invisible \(B^+\to K^+X\) decays from the Belle II \(B^+\to K^+\nu\bar\nu\) measurement'
   authors: "L. Gärtner, N. Krug, T. Kuhr, M. A. Schmidt, S. Stefkova, B. Yabsley"
   venue: "Phys. Rev. D 114, 032003"
   date: 2026-02-01
   link: "https://doi.org/10.1103/ggtk-gkx4"
 
-- title: 'Model-agnostic likelihood for the reinterpretation of the $B^+ \to K^+ \nu \bar \nu$ measurement at Belle II'
+- title: 'Model-agnostic likelihood for the reinterpretation of the \(B^+ \to K^+ \nu \bar \nu\) measurement at Belle II'
   authors: "M. Abumusabh et al. (Belle II Collaboration)"
   venue: "Phys. Rev. D 112, 092016"
   date: 2025-07-01
@@ -24,7 +24,7 @@
   date: 2025-03-01
   link: "https://arxiv.org/abs/2504.00256"
 
-- title: 'Accelerating discovery: model-agnostic likelihoods for the reinterpretation of particle physics results and their application to the Belle II $B^{+} \to K^{+} \nu \bar \nu$ measurement'
+- title: 'Accelerating discovery: model-agnostic likelihoods for the reinterpretation of particle physics results and their application to the Belle II \(B^{+} \to K^{+} \nu \bar \nu\) measurement'
   authors: "L. Gärtner"
   venue: "PhD thesis, Ludwig-Maximilians-Universität München"
   date: 2025-01-01

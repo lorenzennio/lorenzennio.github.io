@@ -23,3 +23,6 @@ In my free time, I get excited about brainstorming how to deal with the impact o
   <li><strong>{{ item.date | date: "%B %Y" }}</strong> &mdash; {% if item.link %}<a href="{{ item.link }}">{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}</li>
 {% endfor %}
 </ul>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
