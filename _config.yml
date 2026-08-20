@@ -105,8 +105,8 @@ analytics:
 author:
   name             : *name # *name is a YAML reference pointing to the &anchor earlier
   avatar           : "/assets/images/port.jpg"
-  bio              : "I am a **theoretical and computational physicist** interested in high energy physics, gravity and cosmology."
-  location         : "vienna, at"
+  bio              : "**Physicist** working on high energy physics, machine learning, emerging tech. Experience in energy and policy."
+  location         : "Munich, Germany"
   links:
     - label: "mail"
       icon: "fas fa-fw fa-envelope"

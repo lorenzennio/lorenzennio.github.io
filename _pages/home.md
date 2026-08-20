@@ -6,14 +6,13 @@ excerpt: "A brief introduction to me and my work, and current news."
 #toc: true
 ---
 
-Passionate about **theoretical physics and data methods**. My research interests lie in the area of *high energy physics, gravity, cosmology* and their intersection.
+Hi!
 
-I hold a PhD in Physics from the LMU in Munich to **Enhance Exploitation of Data in High Energy Physics with Public Likelihoods**. 
+I currently work on **data analytics methods and statistics in particle physics**. My research focusses on accelerating science, bringing us new breakthroughs faster.
 
-Former intern at the [IAEA](https://www.iaea.org/), working on synergies between nuclear fission and nuclear fusion, to accelerate the availability of fusion power plants delivering electricity to the grid.
+I hold a PhD in Physics from the LMU in Munich, I have worked in the German parliament as scientific advisor, and at the [International Atomic Energy Agency](https://www.iaea.org/).
 
-Active supporter of open source and open science.
-Excited about climbing, mountaineering and fighting climate change.
+In my free time, I get excited about brainstorming how to deal with the impact of AI, fighting climate change, travelling, climbing and mountaineering.
 
 ---
 
