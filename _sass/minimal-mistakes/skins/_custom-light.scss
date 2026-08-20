@@ -2,6 +2,11 @@
    Custom light skin (base/text swapped from the dark skin)
    ========================================================================== */
 
+/* Font -- must precede other rules to stay a valid CSS @import */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+$sans-serif: "Montserrat", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+
 /* Colors */
 $background-color: #f8f4eb !default;
 $text-color: #0C2140 !default;
