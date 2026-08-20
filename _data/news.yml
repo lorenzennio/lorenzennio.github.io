@@ -1,129 +1,99 @@
 # News entries shown on the about page, newest first.
-# Add new items to the top of this list.
-- date: 2026-08-19
-  text: "Released REDIST, a reweighting method for reinterpreting binned HEP analyses."
-  link: "https://github.com/lorenzennio/redist"
-
+# Add new items to the top of this list. `text` may contain inline <a>
+# links on just the relevant phrase (not the whole entry) -- see
+# _pages/home.md for how this is rendered.
 - date: 2026-08-01
-  text: "Gave a talk at ICHEP 2026."
-  link: "https://indico.cern.ch/event/1522800/contributions/6982707/"
+  text: 'Gave a talk at <a href="https://indico.cern.ch/event/1522800/contributions/6982707/">ICHEP 2026</a>.'
 
 - date: 2026-06-29
-  text: "Released BibSpire, a tool that replaces .bib entries with official INSPIRE-HEP citations."
-  link: "https://github.com/lorenzennio/bibspire"
+  text: 'Released <a href="https://github.com/lorenzennio/bibspire">BibSpire</a>, a tool that replaces .bib entries with official INSPIRE-HEP citations.'
 
 - date: 2026-04-01
-  text: 'Paper: "Joint LHCb–Belle II prospects to constrain new physics in \(B\to D^{(*)}\tau\nu\)", Eur. Phys. J. C 86, 718.'
-  link: "https://doi.org/10.1140/epjc/s10052-026-15908-5"
+  text: 'Paper: "Joint LHCb–Belle II prospects to constrain new physics in \(B\to D^{(*)}\tau\nu\)", <a href="https://doi.org/10.1140/epjc/s10052-026-15908-5">Eur. Phys. J. C 86, 718</a>.'
 
 - date: 2026-03-01
-  text: "Scientific advisor to MP Lars Rohwer in the German Bundestag on energy, economic and technology policy, through May 2026; wrote a position paper and an FAZ guest article on electricity tax, and gave a seminar on nuclear fission and fusion for MPs and staff."
-  link: "https://www.bundestag.de/abgeordnete/biografien/R/rohwer_lars-1046822"
+  text: 'Scientific advisor to <a href="https://www.bundestag.de/abgeordnete/biografien/R/rohwer_lars-1046822">MP Lars Rohwer</a> in the German Bundestag on energy, economic and technology policy, through May 2026; wrote a position paper and an FAZ guest article on electricity tax, and gave a seminar on nuclear fission and fusion for MPs and staff.'
 
 - date: 2026-02-01
-  text: 'Paper: "Constraints on invisible \(B^+\to K^+X\) decays from the Belle II \(B^+\to K^+\nu\bar\nu\) measurement", Phys. Rev. D 114, 032003.'
-  link: "https://doi.org/10.1103/ggtk-gkx4"
+  text: 'Paper: "Constraints on invisible \(B^+\to K^+X\) decays from the Belle II \(B^+\to K^+\nu\bar\nu\) measurement", <a href="https://doi.org/10.1103/ggtk-gkx4">Phys. Rev. D 114, 032003</a>.'
 
 - date: 2025-12-17
-  text: "Defended PhD thesis, summa cum laude."
-  link: "https://arxiv.org/abs/2606.22215"
+  text: 'Defended <a href="https://arxiv.org/abs/2606.22215">PhD thesis</a>, summa cum laude.'
 
 - date: 2025-11-01
-  text: "Awarded a €300,000 BMFTR grant for the DEMOS project and started as a Postdoctoral Researcher at LMU Munich."
-  link: "https://democratizing-models.github.io/"
+  text: 'Awarded a €300,000 BMFTR grant for the <a href="https://democratizing-models.github.io/">DEMOS project</a> and started as a Postdoctoral Researcher at LMU Munich.'
 
 - date: 2025-09-26
-  text: "Taught a Belle II StarterKit tutorial at KEK, Tsukuba."
-  link: "https://indico.belle2.org/event/15525/contributions/95939/"
+  text: 'Taught a <a href="https://indico.belle2.org/event/15525/contributions/95939/">Belle II StarterKit</a> tutorial at KEK, Tsukuba.'
 
 - date: 2025-09-09
-  text: "Gave a talk at the Belle II Germany Meeting, Bonn."
-  link: "https://indico.belle2.org/event/14576/contributions/98735/"
+  text: 'Gave a talk at the <a href="https://indico.belle2.org/event/14576/contributions/98735/">Belle II Germany Meeting</a>, Bonn.'
 
 - date: 2025-07-01
-  text: 'Paper: "Model-agnostic likelihood for the reinterpretation of the \(B^+\to K^+\nu\bar\nu\) measurement at Belle II", Phys. Rev. D 112, 092016.'
-  link: "https://doi.org/10.1103/pr66-sd36"
+  text: 'Paper: "Model-agnostic likelihood for the reinterpretation of the \(B^+\to K^+\nu\bar\nu\) measurement at Belle II", <a href="https://doi.org/10.1103/pr66-sd36">Phys. Rev. D 112, 092016</a>.'
 
 - date: 2025-07-01
-  text: 'Started the DPG "Leading for Tomorrow" leadership program, through Nov. 2025.'
-  link: "https://www.dpg-physik.de/aktivitaeten-und-programme/programme/leading-for-tomorrow"
+  text: 'Started the DPG <a href="https://www.dpg-physik.de/aktivitaeten-und-programme/programme/leading-for-tomorrow">"Leading for Tomorrow"</a> leadership program, through Nov. 2025.'
 
 - date: 2025-03-01
-  text: "Paper: \"Reinterpretation and preservation of data and analyses in HEP\" (LHC Reinterpretation Forum), arXiv:2504.00256."
-  link: "https://arxiv.org/abs/2504.00256"
+  text: 'Paper: "Reinterpretation and preservation of data and analyses in HEP" (LHC Reinterpretation Forum), <a href="https://arxiv.org/abs/2504.00256">arXiv:2504.00256</a>.'
 
 - date: 2025-03-01
-  text: "Taught at the Inverted CERN School of Computing, CERN."
-  link: "https://indico.cern.ch/event/1468713/overview"
+  text: 'Taught at the <a href="https://indico.cern.ch/event/1468713/overview">Inverted CERN School of Computing</a>, CERN.'
 
 - date: 2024-10-16
-  text: "Gave a talk at Belle II Physics Week, KEK, Tsukuba."
-  link: "https://indico.belle2.org/event/12273/contributions/79673/"
+  text: 'Gave a talk at <a href="https://indico.belle2.org/event/12273/contributions/79673/">Belle II Physics Week</a>, KEK, Tsukuba.'
 
 - date: 2024-10-01
-  text: "Taught a tutorial at Belle II Physics Week, KEK, Tsukuba."
-  link: "https://indico.belle2.org/event/12273/contributions/83116/"
+  text: 'Taught a tutorial at <a href="https://indico.belle2.org/event/12273/contributions/83116/">Belle II Physics Week</a>, KEK, Tsukuba.'
 
 - date: 2024-09-01
-  text: "Attended the 45th CERN School of Computing, DESY Hamburg."
-  link: "https://indico.cern.ch/event/1376644/"
+  text: 'Attended the <a href="https://indico.cern.ch/event/1376644/">45th CERN School of Computing</a>, DESY Hamburg.'
 
 - date: 2024-08-01
-  text: "Attended the Fast and Efficient Python Programming School, Aachen."
-  link: "https://indico.desy.de/event/40133/"
+  text: 'Attended the <a href="https://indico.desy.de/event/40133/">Fast and Efficient Python Programming School</a>, Aachen.'
 
 - date: 2024-07-04
-  text: 'Gave a talk at PyHEP – "Python in HEP".'
-  link: "https://indico.cern.ch/event/1384010/contributions/5994294/"
+  text: 'Gave a talk at <a href="https://indico.cern.ch/event/1384010/contributions/5994294/">PyHEP – "Python in HEP"</a>.'
 
 - date: 2024-05-16
-  text: "Gave a talk at the WLCG/HSF Workshop, DESY Hamburg."
-  link: "https://indico.cern.ch/event/1369601/contributions/5867792/"
+  text: 'Gave a talk at the <a href="https://indico.cern.ch/event/1369601/contributions/5867792/">WLCG/HSF Workshop</a>, DESY Hamburg.'
 
 - date: 2024-05-01
-  text: "Taught at the Belle II Academy, Murnau."
-  link: "https://indico.belle2.org/event/11100/sessions/3871/attachments/28677/42340/Matching%20expectations%20on%20supervision.pdf"
+  text: 'Taught at the <a href="https://indico.belle2.org/event/11100/sessions/3871/attachments/28677/42340/Matching%20expectations%20on%20supervision.pdf">Belle II Academy</a>, Murnau.'
+
+- date: 2024-02-06
+  text: 'Released <a href="https://github.com/lorenzennio/redist">REDIST</a>, a reweighting method for reinterpreting binned HEP analyses.'
 
 - date: 2024-02-01
-  text: 'Paper: "Constructing model-agnostic likelihoods, a method for the reinterpretation of particle physics results", Eur. Phys. J. C 84, 693.'
-  link: "https://doi.org/10.1140/epjc/s10052-024-13038-4"
+  text: 'Paper: "Constructing model-agnostic likelihoods, a method for the reinterpretation of particle physics results", <a href="https://doi.org/10.1140/epjc/s10052-024-13038-4">Eur. Phys. J. C 84, 693</a>.'
 
 - date: 2023-10-26
-  text: "Gave a talk at IRN Terascale, Marseille."
-  link: "https://indico.in2p3.fr/event/30546/contributions/128802/"
+  text: 'Gave a talk at <a href="https://indico.in2p3.fr/event/30546/contributions/128802/">IRN Terascale</a>, Marseille.'
 
 - date: 2023-10-11
-  text: "Taught at the PUNCH Young Academy, LMU Munich."
-  link: "https://indico.desy.de/event/40315/sessions/16490/#20231011"
+  text: 'Taught at the <a href="https://indico.desy.de/event/40315/sessions/16490/#20231011">PUNCH Young Academy</a>, LMU Munich.'
 
 - date: 2023-09-01
-  text: "Gave a talk at the Belle II Germany Meeting, Karlsruhe."
-  link: "https://indico.belle2.org/event/8188/contributions/63706/"
+  text: 'Gave a talk at the <a href="https://indico.belle2.org/event/8188/contributions/63706/">Belle II Germany Meeting</a>, Karlsruhe.'
 
 - date: 2023-09-01
-  text: "Attended Herbstschule Maria Laach."
-  link: "https://herbstschule-hep.tp.nt.uni-siegen.de/"
+  text: 'Attended <a href="https://herbstschule-hep.tp.nt.uni-siegen.de/">Herbstschule Maria Laach</a>.'
 
 - date: 2023-08-30
-  text: '"(Re)interpretation of the LHC results for new physics" talk, IPPP Durham.'
-  link: "https://conference.ippp.dur.ac.uk/event/1178/contributions/6443/"
+  text: '<a href="https://conference.ippp.dur.ac.uk/event/1178/contributions/6443/">"(Re)interpretation of the LHC results for new physics"</a> talk, IPPP Durham.'
 
 - date: 2023-07-01
-  text: "Gave a talk at the Belle II Summer Workshop, Duke University."
-  link: "https://indico.belle2.org/event/8841/contributions/63802/"
+  text: 'Gave a talk at the <a href="https://indico.belle2.org/event/8841/contributions/63802/">Belle II Summer Workshop</a>, Duke University.'
 
 - date: 2023-07-01
-  text: "Taught a tutorial at the Belle II Summer Workshop, Duke University."
-  link: "https://indico.belle2.org/event/8841/contributions/61162/"
+  text: 'Taught a tutorial at the <a href="https://indico.belle2.org/event/8841/contributions/61162/">Belle II Summer Workshop</a>, Duke University.'
 
 - date: 2023-03-01
-  text: "Attended the IMPRS/Origins Data Science Block Course, Garching."
-  link: "https://indico.ph.tum.de/event/7272/"
+  text: 'Attended the <a href="https://indico.ph.tum.de/event/7272/">IMPRS/Origins Data Science Block Course</a>, Garching.'
 
 - date: 2022-06-01
-  text: "Gave a talk at the IAEA Technical Meeting on Fission-Fusion Synergies, Vienna."
-  link: "https://conferences.iaea.org/event/285/contributions/22008/attachments/11960/19453/1.00-Virgili.pdf"
+  text: 'Gave a talk at the <a href="https://conferences.iaea.org/event/285/contributions/22008/attachments/11960/19453/1.00-Virgili.pdf">IAEA Technical Meeting on Fission-Fusion Synergies</a>, Vienna.'
 
 - date: 2018-06-01
-  text: "Awarded the Franz Mandl Prize (best BSc theoretical physics graduate), University of Manchester."
-  link: "https://en.wikipedia.org/wiki/Franz_Mandl_(physicist)"
+  text: 'Awarded the <a href="https://en.wikipedia.org/wiki/Franz_Mandl_(physicist)">Franz Mandl Prize</a> (best BSc theoretical physics graduate), University of Manchester.'

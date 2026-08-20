@@ -20,7 +20,7 @@ In my free time, I get excited about brainstorming how to deal with the impact o
 
 <ul>
 {% for item in site.data.news %}
-  <li><strong>{{ item.date | date: "%B %Y" }}</strong> &mdash; {% if item.link %}<a href="{{ item.link }}">{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}</li>
+  <li>{{ item.date | date: "%B %Y" }} &mdash; {{ item.text }}</li>
 {% endfor %}
 </ul>
 
