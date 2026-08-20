@@ -20,13 +20,7 @@ In my free time, I get excited about brainstorming how to deal with the impact o
 
 <ul>
 {% for item in site.data.news %}
-  <li>
-    <span style="display: flex; align-items: baseline;">
-      <span style="flex: 0 0 auto; white-space: nowrap;">{{ item.date | date: "%B %Y" }}</span>
-      <span style="flex: 1 1 auto; min-width: 1em; margin: 0 0.5em 0.3em; border-bottom: 1px dashed;"></span>
-      <span style="min-width: 0;">{{ item.text }}</span>
-    </span>
-  </li>
+  <li>{{ item.date | date: "%B %Y" }} &mdash; {{ item.text }}</li>
 {% endfor %}
 </ul>
 
