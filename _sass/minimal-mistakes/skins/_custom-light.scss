@@ -49,6 +49,12 @@ html {
   html { font-size: 20px !important; }
 }
 
+// Projects list excerpt text -- see
+// _sass/minimal-mistakes/skins/_dark.scss for why this is here.
+.archive__item-excerpt {
+  font-size: 1em !important;
+}
+
 // Author avatar: round with a thin orange-accent border. See
 // _sass/minimal-mistakes/skins/_dark.scss for why this is overridden
 // here (and needs !important) rather than left to the theme's default

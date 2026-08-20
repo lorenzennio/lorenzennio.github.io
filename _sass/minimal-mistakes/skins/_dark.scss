@@ -55,6 +55,13 @@ html {
   html { font-size: 20px !important; }
 }
 
+// Projects list excerpt text: the theme sets this to $type-size-6
+// (0.75em), noticeably smaller than normal body text (1em, no
+// override elsewhere) -- match it to the rest of the site's text.
+.archive__item-excerpt {
+  font-size: 1em !important;
+}
+
 // Author avatar: round with a thin orange-accent border (theme default
 // border-color is a neutral $border-color mix, and only applied above
 // the $large breakpoint -- override here to use the accent color at
