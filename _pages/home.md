@@ -18,12 +18,9 @@ In my free time, I get excited about brainstorming how to deal with the impact o
 
 ## News
 
-<ul style="list-style: none; padding-left: 0;">
+<ul>
 {% for item in site.data.news %}
-  <li style="display: flex; margin-bottom: 0.4em;">
-    <span style="flex: 0 0 9em;">{{ item.date | date: "%B %Y" }}</span>
-    <span>&mdash; {{ item.text }}</span>
-  </li>
+  <li>{{ item.date | date: "%B %Y" }} &mdash; {{ item.text }}</li>
 {% endfor %}
 </ul>
 
