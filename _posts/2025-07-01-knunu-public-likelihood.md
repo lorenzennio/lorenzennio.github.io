@@ -7,7 +7,7 @@ thumbnail: /assets/images/knunu-full-spectrum.png
 
 <p>Published as: <a href="https://doi.org/10.1103/pr66-sd36">Model-agnostic likelihood for the reinterpretation of the \(B^+\to K^+\nu\bar\nu\) measurement at Belle II</a>, Phys. Rev. D 112, 092016 (2025).</p>
 
-<center><img src="/assets/images/knunu-full-spectrum.png" width="70%"/></center>
+<center><img src="/assets/images/knunu-full-spectrum.png" width="50%"/></center>
 
 <p>Posterior constraints on the effective Wilson coefficients of a general \(b\to s\nu\bar\nu\) contact interaction, from the public likelihood applied to the full \(B^+\to K^+\nu\bar\nu\) measurement.</p>
 
