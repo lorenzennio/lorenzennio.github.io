@@ -34,6 +34,19 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
   background-color: $form-background-color;
 }
 
+// Author avatar: round with a thin orange-accent border (theme default
+// border-color is a neutral $border-color mix, and only applied above
+// the $large breakpoint -- override here to use the accent color at
+// all sizes; border-radius: 50% for the round shape already comes from
+// the theme's own _sidebar.scss). !important is needed because skins
+// compile before _sidebar.scss, whose own equal-specificity rule
+// (also gated to the $large breakpoint) would otherwise win back on
+// wider screens regardless of source order within this file.
+.author__avatar img {
+  padding: 4px !important;
+  border: 1px solid $primary-color !important;
+}
+
 // Dark/light toggle button, injected by assets/js/theme-init.js.
 // Lives in the skin partials (not _masthead.scss) because this repo's
 // local _sass/minimal-mistakes/_masthead.scss override is inert: it's
