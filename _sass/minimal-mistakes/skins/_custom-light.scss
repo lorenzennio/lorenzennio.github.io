@@ -34,6 +34,21 @@ $navicon-link-color-hover: mix(#fff, $background-color, 30%) !default;
   background-color: $form-background-color;
 }
 
+// Base font size -- see _sass/minimal-mistakes/skins/_dark.scss for
+// why this is here and needs !important.
+html {
+  font-size: 14px !important;
+}
+@media (min-width: 768px) {
+  html { font-size: 16px !important; }
+}
+@media (min-width: 1024px) {
+  html { font-size: 18px !important; }
+}
+@media (min-width: 1280px) {
+  html { font-size: 20px !important; }
+}
+
 // Author avatar: round with a thin orange-accent border. See
 // _sass/minimal-mistakes/skins/_dark.scss for why this is overridden
 // here (and needs !important) rather than left to the theme's default
