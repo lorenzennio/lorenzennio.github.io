@@ -1,5 +1,5 @@
 ---
-title: "publications & talks"
+title: "Publications & Talks"
 permalink: /publications/
 layout: single
 author_profile: true

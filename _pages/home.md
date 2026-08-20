@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "about me"
+title: "About Me"
 excerpt: "A brief introduction to me and my work, and current news."
 
 #toc: true
