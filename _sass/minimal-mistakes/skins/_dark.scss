@@ -42,7 +42,13 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
 // compile before _sidebar.scss, whose own equal-specificity rule
 // (also gated to the $large breakpoint) would otherwise win back on
 // wider screens regardless of source order within this file.
+// width/height/object-fit: port.jpg is a 3024x4032 portrait photo, not
+// square -- the theme only constrains max-width, so border-radius: 50%
+// alone renders an oval. Force a square box and crop to fill it.
 .author__avatar img {
+  width: 110px !important;
+  height: 110px !important;
+  object-fit: cover !important;
   padding: 4px !important;
   border: 1px solid $primary-color !important;
 }

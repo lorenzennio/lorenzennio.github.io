@@ -39,6 +39,9 @@ $navicon-link-color-hover: mix(#fff, $background-color, 30%) !default;
 // here (and needs !important) rather than left to the theme's default
 // $border-color.
 .author__avatar img {
+  width: 110px !important;
+  height: 110px !important;
+  object-fit: cover !important;
   padding: 4px !important;
   border: 1px solid $primary-color !important;
 }
