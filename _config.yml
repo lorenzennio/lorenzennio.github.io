@@ -56,6 +56,7 @@ reCaptcha:
 
 atom_feed:
   path                   : # blank (default) uses feed.xml
+  hide                   : true # removes the "Feed" link from the footer
 
 search                   : true # true, false (default)
 search_full_content      : true # true, false (default)
@@ -95,10 +96,7 @@ social:
 
 # Analytics
 analytics:
-  provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          :  G-TRHGWZ7QQK # Replace this with your ID, or delete
-    #anonymize_ip         : true
+  provider               : false # false (default), "google", "google-universal", "google-gtag", "custom"
 
 
 # Site Author
