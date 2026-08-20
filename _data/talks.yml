@@ -31,13 +31,24 @@
   link: "https://indico.in2p3.fr/event/30546/contributions/128802/"
 
 - title: "A model-independent likelihood function for the Belle II B+→K+νν̄ analysis"
+  venue: "Belle II Germany Meeting"
+  date: 2023-09-01
+  link: "https://indico.belle2.org/event/8188/contributions/63706/"
+
+- title: "A model-independent likelihood function for the Belle II B+→K+νν̄ analysis"
   venue: "(Re)interpretation of the LHC results for new physics"
   date: 2023-08-30
   link: "https://conference.ippp.dur.ac.uk/event/1178/contributions/6443/"
 
-# Date/title not verified -- conferences.iaea.org blocked the fetch (403).
-# Fill in manually if you have the exact date.
+- title: "A model-independent likelihood function for the Belle II B+→K+νν̄ analysis"
+  venue: "Belle II Summer Workshop"
+  date: 2023-07-01
+  link: "https://indico.belle2.org/event/8841/contributions/63802/"
+
+# Date sourced from Gärtner's own CV.tex (conferences.iaea.org blocked the
+# fetch, 403); title is still the meeting's session title, not confirmed
+# verbatim against the talk itself.
 - title: "Fission-Fusion Synergies"
   venue: "IAEA Technical Meeting on Fission-Fusion Synergies"
-  date:
+  date: 2022-06-01
   link: "https://conferences.iaea.org/event/285/contributions/22008/attachments/11960/19453/1.00-Virgili.pdf"
