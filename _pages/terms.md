@@ -9,8 +9,13 @@ toc: true
 
 Angaben gemäß § 5 TMG / Digital Services Act:
 
-Dr. Lorenz Gärtner
-**[TODO: postal address not yet provided — this Impressum is incomplete until it is added]**
+Dr. Lorenz Gärtner<br>
+Ludwig-Maximilians-Universität München<br>
+Fakultät für Physik<br>
+Excellence Cluster ORIGINS<br>
+Am Coulombwall 1<br>
+85748 Garching<br>
+Germany
 
 Contact: [lorenz.gaertner@gmail.com](mailto:lorenz.gaertner@gmail.com)
 
