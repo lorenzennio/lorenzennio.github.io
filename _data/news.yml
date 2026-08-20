@@ -5,9 +5,6 @@
 - date: 2026-08-01
   text: 'Gave a talk at <a href="https://indico.cern.ch/event/1522800/contributions/6982707/">ICHEP 2026</a>.'
 
-- date: 2026-06-29
-  text: 'Released <a href="https://github.com/lorenzennio/bibspire">BibSpire</a>, a tool that replaces .bib entries with official INSPIRE-HEP citations.'
-
 - date: 2026-04-01
   text: 'Paper: "Joint LHCb–Belle II prospects to constrain new physics in \(B\to D^{(*)}\tau\nu\)", <a href="https://doi.org/10.1140/epjc/s10052-026-15908-5">Eur. Phys. J. C 86, 718</a>.'
 
@@ -28,6 +25,9 @@
 
 - date: 2025-09-09
   text: 'Gave a talk at the <a href="https://indico.belle2.org/event/14576/contributions/98735/">Belle II Germany Meeting</a>, Bonn.'
+
+- date: 2025-08-27
+  text: 'Released <a href="https://github.com/lorenzennio/bibspire">BibSpire</a>, a tool that replaces .bib entries with official INSPIRE-HEP citations.'
 
 - date: 2025-07-01
   text: 'Paper: "Model-agnostic likelihood for the reinterpretation of the \(B^+\to K^+\nu\bar\nu\) measurement at Belle II", <a href="https://doi.org/10.1103/pr66-sd36">Phys. Rev. D 112, 092016</a>.'
