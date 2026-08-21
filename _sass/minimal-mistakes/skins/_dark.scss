@@ -112,6 +112,13 @@ html {
   content: " /";
 }
 
+// Removes the theme's default hover underline (a growing bar via
+// ::before) on nav links -- content: none suppresses the pseudo-element
+// entirely, in both rest and :hover states.
+.visible-links a::before {
+  content: none !important;
+}
+
 // Dark/light toggle button, injected by assets/js/theme-init.js.
 // Lives in the skin partials (not _masthead.scss) because this repo's
 // local _sass/minimal-mistakes/_masthead.scss override is inert: it's
