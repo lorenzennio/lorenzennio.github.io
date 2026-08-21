@@ -8,14 +8,16 @@ $sans-serif: "Montserrat", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe U
   "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 
 /* Colors */
-$background-color: #0C2140 !default;
-$text-color: #f8f4eb !default;
-$primary-color: #da7635 !default;
+$background-color: #08172E !default;
+$text-color: #DDD8B8 !default;
+$primary-color: #E77728 !default;
 $border-color: mix(#fff, $background-color, 20%) !default;
 $code-background-color: mix(#000, $background-color, 15%) !default;
 $code-background-color-dark: mix(#000, $background-color, 20%) !default;
 $form-background-color: mix(#000, $background-color, 15%) !default;
-$footer-background-color: mix(#000, $background-color, 30%) !default;
+// Unified with the page background (was mix(#000, $background-color, 30%),
+// which made the footer visibly darker than the rest of the site).
+$footer-background-color: $background-color !default;
 $link-color: $primary-color !default;
 $link-color-hover: mix(#fff, $link-color, 25%) !default;
 $link-color-visited: mix(#000, $link-color, 25%) !default;
@@ -79,6 +81,15 @@ html {
   object-fit: cover !important;
   padding: 4px !important;
   border: 1px solid $primary-color !important;
+}
+
+// Sidebar (author panel on wide/full-width pages): the theme dims it to
+// 75% opacity until hovered on $large+ screens -- always show it at full
+// opacity instead. !important is needed for the same reason as the
+// avatar override above: skins compile before _sidebar.scss, whose own
+// equal-specificity rule would otherwise win back on wide screens.
+.sidebar {
+  opacity: 1 !important;
 }
 
 // Dark/light toggle button, injected by assets/js/theme-init.js.

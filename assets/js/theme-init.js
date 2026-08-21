@@ -36,6 +36,15 @@
   var currentTheme = getPreferredTheme();
   applyTheme(currentTheme);
 
+  // Warm the browser cache for the *other* skin's stylesheet. Toggling
+  // swaps the <link> href (see file header) -- without this, the first
+  // click fetches an uncached ~70KB stylesheet over the network before
+  // the browser can repaint, which shows up as a lag on toggle.
+  if (window.fetch) {
+    var alternateHref = currentTheme === "light" ? darkHref : lightHref;
+    fetch(alternateHref, { credentials: "same-origin" }).catch(function () {});
+  }
+
   // Runs before the masthead exists, so the button is added once the DOM is ready.
   document.addEventListener("DOMContentLoaded", function () {
     var nav = document.querySelector("#site-nav");

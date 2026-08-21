@@ -8,14 +8,16 @@ $sans-serif: "Montserrat", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe U
   "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 
 /* Colors */
-$background-color: #f8f4eb !default;
-$text-color: #0C2140 !default;
-$primary-color: #da7635 !default;
+$background-color: #DDD8B8 !default;
+$text-color: #08172E !default;
+$primary-color: #E77728 !default;
 $border-color: mix(#000, $background-color, 20%) !default;
 $code-background-color: mix(#000, $background-color, 8%) !default;
 $code-background-color-dark: mix(#000, $background-color, 12%) !default;
 $form-background-color: mix(#000, $background-color, 5%) !default;
-$footer-background-color: mix(#000, $background-color, 8%) !default;
+// Unified with the page background (was mix(#000, $background-color, 8%),
+// which made the footer visibly darker than the rest of the site).
+$footer-background-color: $background-color !default;
 $link-color: $primary-color !default;
 $link-color-hover: mix(#000, $link-color, 25%) !default;
 $link-color-visited: mix(#fff, $link-color, 25%) !default;
@@ -65,6 +67,12 @@ html {
   object-fit: cover !important;
   padding: 4px !important;
   border: 1px solid $primary-color !important;
+}
+
+// Sidebar full-opacity override -- see
+// _sass/minimal-mistakes/skins/_dark.scss for why this is here.
+.sidebar {
+  opacity: 1 !important;
 }
 
 // Dark/light toggle button, injected by assets/js/theme-init.js.
