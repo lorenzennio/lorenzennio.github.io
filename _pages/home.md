@@ -13,8 +13,6 @@ I hold a PhD in Physics from the LMU in Munich, I have worked in the German parl
 
 In my free time, I get excited about brainstorming how to deal with the impact of AI, fighting climate change, travelling, climbing and mountaineering.
 
----
-
 ## News
 
 <ul>

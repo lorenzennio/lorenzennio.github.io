@@ -119,6 +119,26 @@ html {
   content: none !important;
 }
 
+// Strips the theme's thin divider lines: the masthead's bottom border,
+// and the border-bottom the theme puts under every h2 in page content
+// (visible under "News", "Publications", "Public Talks", etc.).
+.masthead {
+  border-bottom: none !important;
+}
+
+.page__content h2 {
+  border-bottom: none !important;
+}
+
+// All headings uppercase, not bold -- this also covers the author name
+// in the sidebar (.author__name is an <h3>), matching the nav's
+// uppercase treatment. !important on font-weight because skins compile
+// before _base.scss's own h1-h6 { font-weight: bold }.
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  font-weight: normal !important;
+}
+
 // Dark/light toggle button, injected by assets/js/theme-init.js.
 // Lives in the skin partials (not _masthead.scss) because this repo's
 // local _sass/minimal-mistakes/_masthead.scss override is inert: it's
