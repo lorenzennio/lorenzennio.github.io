@@ -92,6 +92,26 @@ html {
   opacity: 1 !important;
 }
 
+// Masthead redesign, per https://elenarudolph.com/: uppercase nav
+// labels, a checkbox glyph marking the current page (☒/☐, set in
+// _includes/masthead.html) with a "/" separator between items, and no
+// max-width cap so the header spans the full viewport width rather than
+// centering within the theme's content width. !important is needed for
+// the same reason as the avatar/sidebar overrides above: skins compile
+// before _masthead.scss / _navigation.scss, whose own equal-specificity
+// (and, for max-width, breakpoint-gated) rules would otherwise win back.
+.masthead__inner-wrap {
+  max-width: none !important;
+}
+
+.masthead__menu-item a {
+  text-transform: uppercase;
+}
+
+.masthead__menu-item:not(:last-child) a::after {
+  content: " /";
+}
+
 // Dark/light toggle button, injected by assets/js/theme-init.js.
 // Lives in the skin partials (not _masthead.scss) because this repo's
 // local _sass/minimal-mistakes/_masthead.scss override is inert: it's
