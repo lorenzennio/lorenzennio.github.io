@@ -140,6 +140,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal !important;
 }
 
+// Exempt project/post titles from the uppercase transform above -- see
+// _sass/minimal-mistakes/skins/_dark.scss for details.
+.page__title,
+.archive__item-title {
+  text-transform: none;
+}
+
 // Dark/light toggle button, injected by assets/js/theme-init.js.
 // See _sass/minimal-mistakes/skins/_dark.scss for why this lives here
 // rather than in _masthead.scss.

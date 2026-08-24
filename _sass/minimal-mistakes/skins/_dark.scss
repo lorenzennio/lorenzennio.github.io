@@ -194,6 +194,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal !important;
 }
 
+// Exempt project/post titles from the uppercase transform above: title
+// case-folding maps Greek lowercase letters (e.g. ν) to their Greek
+// uppercase form (Ν), which most fonts render identically to the
+// visually similar Latin letter (N) -- silently corrupting any project
+// title that uses Greek physics notation (e.g. "B→Kνν" reads as "B→KNN").
+.page__title,
+.archive__item-title {
+  text-transform: none;
+}
+
 // Dark/light toggle button, injected by assets/js/theme-init.js.
 // Lives in the skin partials (not _masthead.scss) because this repo's
 // local _sass/minimal-mistakes/_masthead.scss override is inert: it's
