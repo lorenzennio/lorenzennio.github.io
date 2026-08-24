@@ -1,5 +1,5 @@
 ---
-title:  "Public likelihood for B→K νν̄"
+title:  "Public likelihood for B→Kνν"
 thumbnail: /assets/images/knunu-full-spectrum.png
 ---
 
