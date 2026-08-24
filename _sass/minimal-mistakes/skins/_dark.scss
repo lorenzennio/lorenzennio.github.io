@@ -109,12 +109,20 @@ html {
   // Tighter spacing than the theme's default 1rem side margin on each
   // link -- spacing between items now comes entirely from the " / "
   // separator below, giving a single space either side of "/" instead
-  // of a wide gap.
-  margin: 0;
+  // of a wide gap. !important: skins compile before _navigation.scss,
+  // whose .greedy-nav a { margin: 0 1rem; } is equal specificity and
+  // would otherwise win back via source order.
+  margin: 0 !important;
 }
 
 .masthead__menu-item:not(:last-child) a::after {
-  content: " / ";
+  content: " /";
+  // The theme's <a> is display: block, and block boxes trim trailing
+  // whitespace from their inline content -- a literal trailing space
+  // here (" / ") is silently discarded, so the gap before the next item
+  // collapses to zero. margin-right isn't trimmed; use it instead to
+  // guarantee a single-space gap on that side too.
+  margin-right: 0.3em;
 }
 
 // Wrap nav items onto a new line on narrow (phone) screens instead of

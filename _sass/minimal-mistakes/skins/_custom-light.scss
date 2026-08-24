@@ -83,12 +83,14 @@ html {
 
 .masthead__menu-item a {
   text-transform: uppercase;
-  // Tighter spacing -- see _dark.scss for why.
-  margin: 0;
+  // Tighter spacing -- see _dark.scss for why (!important included).
+  margin: 0 !important;
 }
 
 .masthead__menu-item:not(:last-child) a::after {
-  content: " / ";
+  content: " /";
+  // Trailing-whitespace trimming on block <a>s -- see _dark.scss.
+  margin-right: 0.3em;
 }
 
 // Wrap nav items onto a new line on narrow (phone) screens instead of
