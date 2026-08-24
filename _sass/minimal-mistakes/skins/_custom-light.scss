@@ -87,9 +87,16 @@ html {
   margin: 0 !important;
 }
 
-.masthead__menu-item:not(:last-child) a::after {
-  content: " /";
-  // Trailing-whitespace trimming on block <a>s -- see _dark.scss.
+// The "/" separator is not part of the link -- see _dark.scss for why.
+.masthead__menu-item {
+  display: flex !important;
+  align-items: center;
+}
+
+.masthead__menu-item:not(:last-child)::after {
+  content: "/";
+  // Leading/trailing whitespace trimming -- see _dark.scss.
+  margin-left: 0.3em;
   margin-right: 0.3em;
 }
 

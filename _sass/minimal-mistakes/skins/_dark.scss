@@ -107,7 +107,7 @@ html {
 .masthead__menu-item a {
   text-transform: uppercase;
   // Tighter spacing than the theme's default 1rem side margin on each
-  // link -- spacing between items now comes entirely from the " / "
+  // link -- spacing between items now comes entirely from the " /"
   // separator below, giving a single space either side of "/" instead
   // of a wide gap. !important: skins compile before _navigation.scss,
   // whose .greedy-nav a { margin: 0 1rem; } is equal specificity and
@@ -115,13 +115,27 @@ html {
   margin: 0 !important;
 }
 
-.masthead__menu-item:not(:last-child) a::after {
-  content: " /";
-  // The theme's <a> is display: block, and block boxes trim trailing
-  // whitespace from their inline content -- a literal trailing space
-  // here (" / ") is silently discarded, so the gap before the next item
-  // collapses to zero. margin-right isn't trimmed; use it instead to
-  // guarantee a single-space gap on that side too.
+// The "/" separator lives on the <li>, not inside the <a>, so it's a
+// plain visual divider -- not part of the link's click target or its
+// :hover color change. display: flex on the li (!important: skins
+// compile before _masthead.scss's .masthead__menu-item { display:
+// block }) keeps the <a> (itself display: block) and the ::after text
+// on the same line -- without it, the block-level <a> would force the
+// separator onto its own line below.
+.masthead__menu-item {
+  display: flex !important;
+  align-items: center;
+}
+
+.masthead__menu-item:not(:last-child)::after {
+  content: "/";
+  // Now that the li is display: flex, this ::after is its own flex
+  // item/line box, so *both* leading and trailing whitespace in
+  // `content` get trimmed (same trimming that affected only the
+  // trailing side when this lived inside the block-level <a> -- see
+  // the margin-right comment history). Use margins on both sides
+  // instead of literal spaces in the content string.
+  margin-left: 0.3em;
   margin-right: 0.3em;
 }
 
