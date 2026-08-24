@@ -106,10 +106,43 @@ html {
 
 .masthead__menu-item a {
   text-transform: uppercase;
+  // Tighter spacing than the theme's default 1rem side margin on each
+  // link -- spacing between items now comes entirely from the " / "
+  // separator below, giving a single space either side of "/" instead
+  // of a wide gap.
+  margin: 0;
 }
 
 .masthead__menu-item:not(:last-child) a::after {
-  content: " /";
+  content: " / ";
+}
+
+// Wrap nav items onto a new line on narrow (phone) screens instead of
+// disappearing: the greedy-nav JS (assets/js/plugins/jquery.greedy-
+// navigation.js) hides overflowing items behind a hamburger toggle, but
+// its width math includes $(".site-title").outerWidth() -- since
+// _includes/masthead.html no longer renders .site-title (removed
+// earlier this session), that selector matches nothing, outerWidth()
+// returns undefined, and the resulting NaN poisons the whole
+// availableSpace calculation. NaN comparisons are always false, so the
+// JS never moves overflowing items into .hidden-links -- they're just
+// clipped by .visible-links' overflow: hidden instead, i.e. they
+// disappear. Bypass the JS's hide/show behavior entirely (matching the
+// theme's own .no-js fallback below) by always wrapping and hiding the
+// now-unused toggle/hidden-links dropdown.
+.greedy-nav {
+  .visible-links {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  &__toggle {
+    display: none !important;
+  }
+
+  .hidden-links {
+    display: none !important;
+  }
 }
 
 // Removes the theme's default hover underline (a growing bar via

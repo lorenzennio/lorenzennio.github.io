@@ -83,10 +83,29 @@ html {
 
 .masthead__menu-item a {
   text-transform: uppercase;
+  // Tighter spacing -- see _dark.scss for why.
+  margin: 0;
 }
 
 .masthead__menu-item:not(:last-child) a::after {
-  content: " /";
+  content: " / ";
+}
+
+// Wrap nav items onto a new line on narrow (phone) screens instead of
+// disappearing -- see _dark.scss for why.
+.greedy-nav {
+  .visible-links {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  &__toggle {
+    display: none !important;
+  }
+
+  .hidden-links {
+    display: none !important;
+  }
 }
 
 // Removes the theme's default hover underline on nav links -- see
