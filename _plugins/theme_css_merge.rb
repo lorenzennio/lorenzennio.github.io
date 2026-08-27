@@ -90,3 +90,20 @@ module ThemeCssMerge
     ":root{#{root_block}}[data-theme=\"light\"]{#{light_block}}#{merged_parts.join}"
   end
 end
+
+if defined?(Jekyll)
+  Jekyll::Hooks.register(:site, :post_write) do |site|
+    css_dir = File.join(site.dest, "assets", "css")
+    dark_path = File.join(css_dir, "main.css")
+    light_path = File.join(css_dir, "main-light.css")
+
+    next unless File.exist?(dark_path) && File.exist?(light_path)
+
+    merged = ThemeCssMerge.merge(File.read(dark_path), File.read(light_path))
+    File.write(dark_path, merged)
+
+    [light_path, "#{light_path}.map", "#{dark_path}.map"].each do |path|
+      File.delete(path) if File.exist?(path)
+    end
+  end
+end
