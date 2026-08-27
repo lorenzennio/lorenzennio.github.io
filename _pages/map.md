@@ -228,6 +228,10 @@ fetch(ATLAS_URL)
 const markerGeo = new THREE.SphereGeometry(0.0105, 16, 12);
 const markerMat = new THREE.MeshBasicMaterial({ color: theme.point });
 const haloMat = new THREE.MeshBasicMaterial({ color: theme.point, transparent: true, opacity: 0.3, depthWrite: false });
+/* invisible, larger hit-target sphere used only for raycasting — the
+   visible dot is too small on screen to click reliably */
+const hitGeo = new THREE.SphereGeometry(0.05, 12, 8);
+const hitMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
 const markers = [];
 POINTS.forEach((d, i) => {
   const pos = latLonToVec3(d.lat, d.lon, 1.012);
@@ -238,8 +242,11 @@ POINTS.forEach((d, i) => {
   const halo = new THREE.Mesh(new THREE.SphereGeometry(0.021, 16, 12), haloMat);
   halo.position.copy(pos);
   halo.name = 'point-halo-' + i;
-  globe.add(m, halo);
-  markers.push({ mesh: m, halo, data: d, base: pos.clone() });
+  const hit = new THREE.Mesh(hitGeo, hitMat);
+  hit.position.copy(pos);
+  hit.name = 'point-hit-' + i;
+  globe.add(m, halo, hit);
+  markers.push({ mesh: m, halo, hit, data: d, base: pos.clone() });
 });
 
 /* live theme switching — re-applied whenever the site's own dark/light
@@ -295,9 +302,9 @@ function pick(ev) {
   const r = renderer.domElement.getBoundingClientRect();
   ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
   ray.setFromCamera(ndc, camera);
-  const hit = ray.intersectObjects(markers.map(m => m.mesh), false)[0];
+  const hit = ray.intersectObjects(markers.map(m => m.hit), false)[0];
   if (!hit) return null;
-  const mk = markers.find(m => m.mesh === hit.object);
+  const mk = markers.find(m => m.hit === hit.object);
   return facing(mk) ? mk : null;
 }
 /* a point is pickable only while it faces the camera */
@@ -387,6 +394,7 @@ function tick() {
     const on = facing(mk);
     const s = on ? 1 : 0.001;
     mk.mesh.scale.setScalar(s);
+    mk.hit.scale.setScalar(s);
     mk.halo.scale.setScalar(on ? 1 + 0.25 * Math.sin(t * 1.6 + mk.base.x * 3) : 0.001);
   });
 
