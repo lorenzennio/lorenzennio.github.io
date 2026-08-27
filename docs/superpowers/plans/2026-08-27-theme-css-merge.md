@@ -209,7 +209,7 @@ end
 - [ ] **Step 4: Run the tests to verify they pass**
 
 Run: `ruby test/theme_css_merge_test.rb`
-Expected: `7 runs, ..., 0 failures, 0 errors`
+Expected: `9 runs, ..., 0 failures, 0 errors`
 
 - [ ] **Step 5: Commit**
 
@@ -255,7 +255,7 @@ end
 - [ ] **Step 2: Run the unit tests to confirm nothing broke**
 
 Run: `ruby test/theme_css_merge_test.rb`
-Expected: still `7 runs, ..., 0 failures, 0 errors`.
+Expected: still `9 runs, ..., 0 failures, 0 errors`.
 
 - [ ] **Step 3: Run a real Jekyll build and verify the merge happened**
 
@@ -276,6 +276,17 @@ Expected:
 - First command prints a number > 0 (color variables were substituted).
 - Second command prints a `:root{--tv-0:...;...}` block with real color values.
 - Both `test` checks print `OK: ...`.
+
+A real deployment should also confirm the leading `@import`/BOM of the
+original compiled stylesheet still precedes any generated rule -- the
+generated `:root{...}[data-theme="light"]{...}` block is appended after
+the merged rules, not prepended, specifically so it doesn't land before
+the Google Fonts `@import`. (`_site/assets/css/main.css` should start
+with the same bytes the un-merged Sass compiler produced, e.g.
+`head -c 200 _site/assets/css/main.css` showing the `@import` first, not
+`:root{`.) The final-review fix's `test_leading_bom_and_import_survive_the_merge`
+unit test (`test/theme_css_merge_test.rb`) now covers this ordering at the
+unit level, but it's worth confirming here too for future readers.
 
 - [ ] **Step 4: Commit**
 

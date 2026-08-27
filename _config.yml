@@ -161,6 +161,7 @@ exclude:
   - Capfile
   - CHANGELOG
   - config
+  - docs
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
@@ -170,6 +171,7 @@ exclude:
   - package.json
   - Rakefile
   - README
+  - test
   - tmp
 keep_files:
   - .git

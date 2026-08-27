@@ -8,9 +8,15 @@
 # output from the same Sass partials -- only a couple dozen color literals
 # differ. Rather than shipping both stylesheets and swapping which one is
 # linked at runtime, this rewrites main.css in place with `var(--tv-N)` in
-# place of the differing literals, prepends the two small variable blocks,
-# and (via the Jekyll hook below) drops main-light.css from the build
-# output entirely.
+# place of the differing literals, appends the two small variable blocks
+# after the rewritten rules, and (via the Jekyll hook below) drops
+# main-light.css from the build output entirely.
+#
+# Note: Jekyll's `--safe` flag skips loading everything under `_plugins/`
+# entirely, which would silently ship unmerged main.css/main-light.css with
+# a non-functional [data-theme] toggle. This repo's build
+# (.github/workflows/pages.yml) does not pass --safe, so this is a
+# documentation note for future maintainers, not current behavior.
 module ThemeCssMerge
   # Matches a CSS color literal: #hex, rgb()/rgba(), or hsl()/hsla().
   COLOR_PATTERN = /
@@ -87,7 +93,7 @@ module ThemeCssMerge
     root_block = var_names.map { |(dark_v, _light_v), name| "#{name}:#{dark_v}" }.join(";")
     light_block = var_names.map { |(_dark_v, light_v), name| "#{name}:#{light_v}" }.join(";")
 
-    ":root{#{root_block}}[data-theme=\"light\"]{#{light_block}}#{merged_parts.join}"
+    "#{merged_parts.join}:root{#{root_block}}[data-theme=\"light\"]{#{light_block}}"
   end
 end
 
@@ -97,7 +103,16 @@ if defined?(Jekyll)
     dark_path = File.join(css_dir, "main.css")
     light_path = File.join(css_dir, "main-light.css")
 
-    next unless File.exist?(dark_path) && File.exist?(light_path)
+    dark_exists = File.exist?(dark_path)
+    light_exists = File.exist?(light_path)
+
+    if dark_exists != light_exists
+      raise ThemeCssMerge::StructuralMismatch,
+            "expected both #{dark_path} and #{light_path} to exist, but only " \
+            "#{dark_exists ? dark_path : light_path} does -- can't merge a single stylesheet"
+    end
+
+    next unless dark_exists && light_exists
 
     merged = ThemeCssMerge.merge(File.read(dark_path), File.read(light_path))
     File.write(dark_path, merged)

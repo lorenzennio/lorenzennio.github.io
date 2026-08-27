@@ -31,8 +31,8 @@ order. 26 distinct (dark, light) color pairs account for every
 difference.
 
 So: merge the two compiled stylesheets into one, replacing the ~26
-differing color literals with `var(--tv-N)`, and prepend a small
-generated block:
+differing color literals with `var(--tv-N)`, and append a small
+generated block after the rewritten rules:
 
 ```css
 :root{--tv-0:#08172e;--tv-1:#3d4144; /* ...26 total... */ }
@@ -79,9 +79,17 @@ Jekyll hook means:
    highlighting palette, which doesn't vary by skin). Differing pairs
    get assigned a `--tv-N` (deduped by identical (dark,light) pair) and
    the dark file's literal is replaced with `var(--tv-N)`.
-5. Prepend the generated `:root{...}[data-theme="light"]{...}` block,
-   and strip the trailing `/*# sourceMappingURL=... */` comment (see
-   Sourcemaps below).
+5. Append the generated `:root{...}[data-theme="light"]{...}` block after
+   the rewritten rules (not prepend), and strip the trailing
+   `/*# sourceMappingURL=... */` comment (see Sourcemaps below). The real
+   compiled `main.css` starts with a UTF-8 BOM immediately followed by an
+   `@import` (the Google Fonts import) — per the CSS Cascade spec, any
+   style rule preceding an `@import` invalidates it, so the generated
+   block must come after the merged rules, not before them. CSS custom
+   property resolution doesn't depend on where the *defining* rule sits
+   relative to where a `var()` is *used*, only on the relative order
+   between the `:root` rule and the `[data-theme="light"]` override (which
+   appending preserves — `:root` still precedes `[data-theme="light"]`).
 6. Write the merged result back over `_site/assets/css/main.css`.
 7. Delete `_site/assets/css/main-light.css` and `main-light.css.map`
    from the build output so they aren't shipped.
