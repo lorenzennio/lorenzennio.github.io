@@ -4,3 +4,6 @@ _site/
 .jekyll-metadata
 .bundle/
 vendor/
+
+# subagent-driven-development scratch workspace (per-plan ledgers, briefs, review packages)
+.superpowers/
