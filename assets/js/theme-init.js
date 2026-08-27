@@ -1,24 +1,17 @@
 /*
  * Dark/light theme toggle.
  *
- * The site's compiled stylesheets are picked by config at build time
- * (_config.yml: minimal_mistakes_skin), so switching at runtime means
- * swapping which compiled stylesheet is linked, not flipping CSS
- * variables -- the theme derives borders/links/code-block colors from
- * the skin's base colors via Sass `mix()` at compile time.
- *
- * - main.css       = dark skin  (_sass/minimal-mistakes/skins/_dark.scss)
- * - main-light.css = light skin (_sass/minimal-mistakes/skins/_custom-light.scss)
+ * Both themes' colors live in one compiled stylesheet as CSS custom
+ * properties (see _plugins/theme_css_merge.rb, which merges main.css and
+ * main-light.css at build time and rewrites the colors that differ
+ * between skins as `var(--tv-N)`, toggled by the `[data-theme="light"]`
+ * selector). Toggling is therefore just flipping the `data-theme`
+ * attribute -- no stylesheet swap, no network fetch.
  */
 (function () {
   "use strict";
 
   var STORAGE_KEY = "theme";
-  var link = document.querySelector('link[href*="assets/css/main"]');
-  if (!link) return;
-
-  var darkHref = link.getAttribute("href").replace("main-light.css", "main.css");
-  var lightHref = darkHref.replace("main.css", "main-light.css");
 
   function getPreferredTheme() {
     var stored = localStorage.getItem(STORAGE_KEY);
@@ -28,22 +21,8 @@
       : "dark";
   }
 
-  function applyTheme(theme) {
-    link.setAttribute("href", theme === "light" ? lightHref : darkHref);
-    document.documentElement.setAttribute("data-theme", theme);
-  }
-
   var currentTheme = getPreferredTheme();
-  applyTheme(currentTheme);
-
-  // Warm the browser cache for the *other* skin's stylesheet. Toggling
-  // swaps the <link> href (see file header) -- without this, the first
-  // click fetches an uncached ~70KB stylesheet over the network before
-  // the browser can repaint, which shows up as a lag on toggle.
-  if (window.fetch) {
-    var alternateHref = currentTheme === "light" ? darkHref : lightHref;
-    fetch(alternateHref, { credentials: "same-origin" }).catch(function () {});
-  }
+  document.documentElement.setAttribute("data-theme", currentTheme);
 
   // Runs before the masthead exists, so the button is added once the DOM is ready.
   document.addEventListener("DOMContentLoaded", function () {
@@ -60,7 +39,7 @@
     button.addEventListener("click", function () {
       currentTheme = currentTheme === "light" ? "dark" : "light";
       localStorage.setItem(STORAGE_KEY, currentTheme);
-      applyTheme(currentTheme);
+      document.documentElement.setAttribute("data-theme", currentTheme);
       button.innerHTML = '<i class="fas ' + (currentTheme === "light" ? "fa-moon" : "fa-sun") + '"></i>';
     });
 

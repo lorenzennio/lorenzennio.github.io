@@ -9,8 +9,11 @@
 remote_theme             : "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin    : "dark" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
-# Loaded in <head>; swaps the stylesheet between main.css (dark) and
-# main-light.css (light) based on stored preference / OS preference.
+# Loaded in <head>; sets data-theme (dark/light) on <html> from stored
+# preference / OS preference before first paint. Actual color switching
+# is CSS custom properties baked into main.css by
+# _plugins/theme_css_merge.rb -- see that file and
+# docs/superpowers/specs/2026-08-27-theme-css-merge-design.md.
 head_scripts:
   - /assets/js/theme-init.js
 
