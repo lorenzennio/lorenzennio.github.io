@@ -112,6 +112,7 @@ const ATLAS_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.jso
    lat, lon in degrees. link is optional.                             */
 const POINTS = [
   { lat: 48.1372, lon: 11.5756, meta: 'Munich, Germany',   title: 'LMU Munich',                    body: 'Postdoctoral researcher, data analytics and statistics in particle physics. PhD 2025.', link: 'https://lorenzgaertner.com/cv/' },
+  { lat: 48.5216, lon: 9.0576,  meta: 'Tübingen, Germany', title: 'MLSS 2026',                     body: 'Attending the Machine Learning Summer School.', link: 'https://mlss2026.is.tuebingen.mpg.de/' },
   { lat: 52.5186, lon: 13.3761, meta: 'Berlin, Germany',   title: 'German Bundestag',              body: 'Scientific advisor on energy, economic and technology policy.' },
   { lat: 48.2349, lon: 16.4166, meta: 'Vienna, Austria',   title: 'IAEA',                          body: 'Worked on fission–fusion synergies at the International Atomic Energy Agency.', link: 'https://conferences.iaea.org/event/285/contributions/22008/attachments/11960/19453/1.00-Virgili.pdf' },
   { lat: 46.2333, lon: 6.0557,  meta: 'Geneva, Switzerland', title: 'CERN',                        body: 'Taught at the Inverted CERN School of Computing.' },
