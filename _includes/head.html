@@ -8,7 +8,16 @@
 
 {%- assign page_title = page.title | default: site.title -%}
 {%- assign page_desc = page.excerpt | default: page.description | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
-<title>{% if page.title %}{{ page.title }} {{ site.title_separator }} {% endif %}{{ site.title }}</title>
+{%- comment -%}
+  Skip the page title when the site title already contains it -- the About
+  page is titled "Lorenz Gärtner" and the site "Dr. Lorenz Gärtner", which
+  would otherwise render a tab reading "Lorenz Gärtner | Dr. Lorenz Gärtner".
+{%- endcomment -%}
+{%- assign show_page_title = false -%}
+{%- if page.title and page.title != site.title -%}
+  {%- unless site.title contains page.title -%}{%- assign show_page_title = true -%}{%- endunless -%}
+{%- endif -%}
+<title>{% if show_page_title %}{{ page.title }} {{ site.title_separator }} {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ page_desc }}">
 <meta name="author" content="{{ site.author.name }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
