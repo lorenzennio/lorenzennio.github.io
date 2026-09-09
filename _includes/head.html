@@ -1,0 +1,44 @@
+{%- comment -%}
+  Hand-authored head. Replaces the minimal-mistakes theme's head.html /
+  seo.html, which went away with the theme (see the redesign notes in
+  docs/superpowers/specs/).
+{%- endcomment -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_desc = page.excerpt | default: page.description | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
+<title>{% if page.title %}{{ page.title }} {{ site.title_separator }} {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page_desc }}">
+<meta name="author" content="{{ site.author.name }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- if page.redirect_to %}
+<meta http-equiv="refresh" content="0; url={{ page.redirect_to | relative_url }}">
+{%- endif %}
+
+<meta property="og:type" content="{% if page.layout == 'project' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ page.thumbnail | default: site.og_image | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+{%- if site.twitter.username %}
+<meta name="twitter:site" content="@{{ site.twitter.username }}">
+{%- endif %}
+
+<link rel="icon" href="{{ '/assets/images/plogol2.png' | relative_url }}">
+{%- feed_meta %}
+
+{%- comment -%}
+  Montserrat carries titles, Inter the running prose, and JetBrains Mono every
+  number, year, category label and nav item -- the mono grid is the page's
+  texture, so it is not an optional nicety. All three are subset to the
+  weights actually used.
+{%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{% include theme-init.html %}

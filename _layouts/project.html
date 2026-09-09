@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<article>
+  <div class="page-head">
+    <span class="kicker">Project &nbsp;·&nbsp; {{ page.date | date: "%B %Y" }}</span>
+    <h1 class="page-head__title">{{ page.title }}</h1>
+  </div>
+
+  {%- if page.thumbnail %}
+    <img class="project__image" src="{{ page.thumbnail | relative_url }}" alt="">
+  {% endif -%}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <a class="back-link" href="{{ '/index/' | relative_url }}">&#8592; Back to the index</a>
+</article>

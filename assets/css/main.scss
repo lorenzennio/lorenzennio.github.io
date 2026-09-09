@@ -1,0 +1,750 @@
+---
+# Front matter (even empty) is what makes Jekyll compile this file.
+---
+
+/* ==========================================================================
+   lorenzgaertner.com
+   One hand-authored stylesheet. Replaces minimal-mistakes and the two
+   ~170-line skin files of !important overrides that were fighting it.
+
+   The design is "The Index": one numbered, filterable register of every kind
+   of work. Its two rules --
+     1. The ☒/☐ checkbox means "what you are looking at", in the nav and in
+        the filters. It appears nowhere else.
+     2. Mono carries the structure (numbers, years, categories, venues, nav);
+        Inter carries only titles and prose. The mono grid IS the texture --
+        without it this is a default-looking sans-serif page.
+   ========================================================================== */
+
+/* --- Tokens ---------------------------------------------------------------
+   Dark is the bare :root default, so a no-JS load and the markup's
+   data-theme="dark" agree. Light only redefines what changes; nothing gets
+   its sole definition inside the [data-theme] block.
+
+   Contrast ratios below are computed against their own background, not
+   eyeballed. The accent differs between themes on purpose: #E77728 reaches
+   6.1:1 on the navy but only 2.1:1 on the cream, which fails AA for text,
+   so light mode uses a darker rust at 4.7:1. */
+:root {
+  --bg:          #08172E;
+  --fg:          #DDD8B8;  /* 12.6:1 on --bg */
+  --accent:      #E77728;  /*  6.1:1 on --bg */
+  --muted:       rgba(221, 216, 184, 0.62); /* 5.5:1 on --bg */
+  --rule:        rgba(221, 216, 184, 0.14);
+  --rule-strong: rgba(221, 216, 184, 0.30);
+  --selection:   rgba(231, 119, 40, 0.30);
+
+  /* Montserrat has no Greek subset and Inter does, so Inter is named as the
+     next fallback rather than left to the system: the literal ν in titles
+     like "Public likelihood for B→Kνν" then lands on a face that is already
+     loaded and sits comfortably beside Montserrat. */
+  --font-display: "Montserrat", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --measure: 34rem;     /* prose line length, ~68 characters */
+  --page:    76rem;     /* outer content width */
+  --gutter:  clamp(1.25rem, 4vw, 3rem);
+
+  --t-nav:   0.875rem;  /* mono controls: nav, filter chips, theme, search */
+  --t-label: 0.75rem;   /* mono labels inside rows: number, year, category */
+  --t-meta:  0.8125rem; /* mono second lines */
+  --t-body:  1rem;
+  --t-row:   1.0625rem; /* index row titles */
+  --t-head:  clamp(1.9rem, 5vw, 3rem);
+}
+
+:root[data-theme="light"] {
+  --bg:          #DDD8B8;
+  --fg:          #08172E;  /* 12.6:1 on --bg */
+  --accent:      #99400A;  /*  4.7:1 on --bg -- #E77728 is only 2.1:1 here */
+  --muted:       rgba(8, 23, 46, 0.70); /* 5.6:1 on --bg */
+  --rule:        rgba(8, 23, 46, 0.16);
+  --rule-strong: rgba(8, 23, 46, 0.32);
+  --selection:   rgba(153, 64, 10, 0.22);
+}
+
+/* --- Reset ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--selection); }
+
+img { max-width: 100%; height: auto; display: block; }
+ul, ol { list-style: none; margin: 0; padding: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; }
+
+a {
+  color: inherit;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+a:hover { text-decoration-color: var(--accent); }
+
+/* One focus treatment everywhere. Never removed -- the index is operated by
+   keyboard as readily as by mouse. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+}
+.skip-link:focus { left: var(--gutter); top: 0.5rem; }
+
+/* --- Shared type helpers -------------------------------------------------- */
+.mono,
+.nav__link,
+.chip,
+.index__n,
+.index__year,
+.index__kind,
+.index__meta,
+.index__count,
+.footer,
+.kicker {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+/* Uppercase + tracking is what makes the mono read as a label rather than as
+   code. Applied only to the true labels, never to running text. */
+.index__kind,
+.index__count,
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: var(--t-label);
+}
+
+/* The controls -- nav, filters, theme, footer -- are the site's operating
+   surface, so they are a step larger than the labels inside the rows. They
+   are set in title case, not caps: the ☒/☐ box already marks state, so the
+   label does not need to shout as well. Tracking drops with the caps, since
+   0.11em is what makes uppercase mono legible and what makes title-case mono
+   look loose. */
+.nav__link,
+.chip,
+.theme-option,
+.footer__links {
+  letter-spacing: 0.02em;
+  font-size: var(--t-nav);
+}
+
+.footer__links { font-size: var(--t-meta); }
+
+/* The ☒/☐ glyph. Set well above its label -- it is the site's one recurring
+   mark, and at label size it reads as punctuation rather than as a control.
+   Nudged down so it sits on the label's optical centre rather than high. */
+.box {
+  font-size: 1.55em;
+  line-height: 1;
+  position: relative;
+  top: 0.08em;
+  margin-right: 0.2em;
+}
+
+/* Menu items are separated by a slash. It lives on the wrapper, not inside
+   the control, so it is neither part of the click target nor caught by the
+   control's hover colour -- and it is set in the rule colour so it recedes
+   behind the labels it divides. */
+.nav__item,
+.filters__item,
+.theme-switch__item,
+.footer__links > li {
+  display: flex;
+  align-items: baseline;
+}
+
+.nav__item:not(:last-child)::after,
+.filters__item:not(:last-child)::after,
+.theme-switch__item:not(:last-child)::after,
+.footer__links > li:not(:last-child)::after {
+  content: "/";
+  font-family: var(--font-mono);
+  color: var(--rule-strong);
+  /* Margins, not spaces in `content`: the ::after is its own flex item, so
+     leading and trailing whitespace in the string is trimmed away. */
+  margin: 0 0.55em;
+}
+
+/* --- Masthead ------------------------------------------------------------- */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 1.1rem var(--gutter);
+}
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.nav__link:hover { color: var(--fg); }
+.nav__link.is-current { color: var(--fg); }
+
+.theme-switch {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.theme-option {
+  font-family: var(--font-mono);
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0.2rem 0;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+.theme-option:hover { color: var(--fg); }
+.theme-option[aria-pressed="true"] { color: var(--fg); }
+
+/* --- Page frame ----------------------------------------------------------- */
+.main {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5rem) var(--gutter) 5rem;
+}
+
+.page-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+
+/* Floated, not a flex column: the portrait only reserves width alongside the
+   intro paragraphs it sits next to. Anything further down the page -- the
+   News list -- runs the full width beneath it. */
+.page-body::after { content: ""; display: table; clear: both; }
+
+.page-head__title {
+  font-family: var(--font-display);
+  font-size: var(--t-head);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.page-head__lede {
+  max-width: var(--measure);
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.kicker {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.9rem;
+}
+
+/* --- Index: filters ------------------------------------------------------- */
+/* Filters left, search flush right, sharing one rule beneath them. */
+.index__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem 2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule-strong);
+  transition: border-color 0.15s ease;
+}
+.index__bar:focus-within { border-bottom-color: var(--accent); }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+}
+
+.chip {
+  cursor: pointer;
+  color: var(--muted);
+  padding: 0.3rem 0;
+  transition: color 0.15s ease;
+}
+.chip:hover { color: var(--fg); }
+.chip[aria-pressed="true"] { color: var(--fg); }
+
+.index__count {
+  color: var(--muted);
+  margin: 1.1rem 0 0;
+}
+
+.index__search { flex: 0 1 18rem; }
+
+.search-input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--t-nav);
+  color: var(--fg);
+  background: none;
+  border: 0;
+  border: 0;
+  padding: 0.1rem;
+  text-align: right;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search-input::placeholder { color: var(--muted); }
+.search-input:focus { outline: none; }
+.search-input:focus-visible { outline: none; }
+/* Safari draws its own clear button; it does not match anything else here. */
+.search-input::-webkit-search-decoration,
+.search-input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.index__empty {
+  font-family: var(--font-mono);
+  font-size: var(--t-nav);
+  color: var(--muted);
+  margin: 2.5rem 0;
+}
+.index__reset {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- Index: rows ---------------------------------------------------------
+   One grid per row, so the numbers, years and categories line up into three
+   vertical mono rules down the page. That alignment is the whole design --
+   if the columns drift, the page stops reading as a register. */
+.index__list { margin-top: 0.5rem; }
+
+.index__row { border-bottom: 1px solid var(--rule); }
+
+.index__link {
+  display: grid;
+  grid-template-columns: 2.75rem 5.25rem 5.25rem minmax(0, 1fr) 1.25rem;
+  gap: 0 1rem;
+  align-items: baseline;
+  width: 100%;
+  padding: 0.95rem 0;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.index__n,
+.index__year,
+.index__kind {
+  font-size: var(--t-label);
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.index__n { font-variant-numeric: tabular-nums; }
+.index__year { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.index__title {
+  font-family: var(--font-display);
+  font-size: var(--t-row);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.index__ext {
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.index__meta {
+  grid-column: 4 / -1;
+  font-size: var(--t-meta);
+  line-height: 1.45;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* Hover: a hairline in the accent across the full row, and the number and
+   external marker light up. No card, no shadow, no transform -- the rule is
+   the whole gesture. */
+.index__row:hover { border-bottom-color: var(--accent); }
+.index__row:hover .index__n,
+.index__row:hover .index__ext { color: var(--accent); }
+.index__link:focus-visible { outline-offset: -2px; }
+
+/* --- Index: globe --------------------------------------------------------
+   Mounted only when the `places` filter is on; three.js is imported at that
+   moment, never on first paint. */
+.globe {
+  position: relative;
+  width: 100%;
+  height: min(42vh, 380px);
+  min-height: 260px;
+  margin: 1.5rem 0 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.globe.is-dragging { cursor: grabbing; }
+.globe canvas { display: block; width: 100% !important; height: 100% !important; }
+
+.globe__hint {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.globe__tooltip {
+  position: absolute;
+  transform: translate(-50%, -170%);
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--rule-strong);
+  padding: 0.45rem 0.6rem;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.globe__popup {
+  position: absolute;
+  width: 21rem;
+  max-width: calc(100% - 2rem);
+  transform: translate(-50%, calc(-100% - 1.1rem));
+  background: var(--bg);
+  border: 1px solid var(--rule-strong);
+  padding: 1.1rem 1.25rem 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+}
+.globe__popup.is-open { opacity: 1; visibility: visible; }
+.globe__popup .gp-meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.globe__popup .gp-title { font-size: var(--t-row); font-weight: 500; line-height: 1.25; }
+.globe__popup .gp-body {
+  font-size: var(--t-meta);
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+  text-wrap: pretty;
+}
+.globe__popup .gp-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  color: var(--accent);
+}
+.globe__popup .gp-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--muted);
+  line-height: 1;
+}
+.globe__popup .gp-close:hover { color: var(--fg); }
+
+/* --- Prose ---------------------------------------------------------------
+   About, CV, project pages, Impressum. Held to a readable measure; the index
+   is the only wide thing on the site. */
+/* The measure is applied to the children, not to .prose itself, so a wide
+   child (the news list, the CV embed, a project image) can opt out of it
+   without fighting a max-width on its parent. */
+.prose { max-width: none; }
+.prose > * { max-width: var(--measure); margin: 0; }
+.prose > * + * { margin-top: 1.1em; }
+.prose > .news,
+.prose > .pdf-frame,
+.prose > .project__image { max-width: none; }
+.prose p { text-wrap: pretty; }
+
+/* Section headings. h2 is a real heading -- full contrast, and large enough
+   to be seen before it is read; at label size it disappeared into the row
+   labels around it. Tracking eases off as the size goes up. h3 stays quiet
+   and muted so the two levels remain distinct. */
+.prose h2,
+.prose h3 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
+.prose h2 {
+  font-size: 1.0625rem;
+  letter-spacing: 0.07em;
+  color: var(--fg);
+  margin-top: 3.25em;
+}
+
+.prose h3 {
+  font-size: var(--t-nav);
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  margin-top: 2.75em;
+}
+
+.prose ul:not(.news) > li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 0.55em;
+  text-wrap: pretty;
+}
+.prose ul:not(.news) > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.6rem;
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.1em 0.3em;
+  background: var(--rule);
+}
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  overflow-x: auto;
+}
+.prose pre code { padding: 0; background: none; }
+.prose blockquote {
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--rule-strong);
+  color: var(--muted);
+}
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
+
+/* News on the About page: date in mono, entry in Inter, no bullet. */
+.news { margin-top: 1.5rem; }
+.news__item {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 0 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.news__date {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  padding-top: 0.2em;
+}
+.news__text { text-wrap: pretty; }
+
+.project__image {
+  width: 100%;
+  max-width: 46rem;
+  border: 1px solid var(--rule);
+  margin-top: 2rem;
+}
+
+/* The photograph at its native 3:4, uncropped -- the Reichstag dome and the
+   sky behind the subject are the reason the picture is worth showing, and a
+   square or circular crop throws both away. Height comes from the intrinsic
+   ratio, so there is nothing to keep in sync if the file is replaced. */
+.portrait {
+  float: right;
+  margin-left: 2.5rem;
+  width: clamp(9rem, 20vw, 15rem);
+  height: auto;
+}
+
+/* CV embed */
+.pdf-frame {
+  width: 100%;
+  height: 85vh;
+  border: 1px solid var(--rule-strong);
+  margin-top: 1.75rem;
+  display: block;
+}
+
+.button {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  text-decoration: none;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.button:hover { background: var(--accent); color: var(--bg); }
+
+.back-link {
+  display: inline-block;
+  margin-top: 3.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  text-decoration: none;
+}
+.back-link:hover { color: var(--accent); }
+
+/* --- Footer --------------------------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 2rem var(--gutter) 3rem;
+}
+
+.footer__name { margin: 0; font-size: var(--t-meta); }
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0;
+}
+.footer__links a { text-decoration: none; }
+.footer__links a:hover { color: var(--accent); }
+
+/* --- Narrow screens ------------------------------------------------------
+   The five-column row cannot hold under ~46rem: year and category keep their
+   mono line at the top, the title and meta drop below and indent to the
+   number's right edge, so the left rule survives. */
+@media (max-width: 46rem) {
+  :root { --t-row: 1rem; }
+
+  .index__link {
+    grid-template-columns: 2.5rem auto minmax(0, 1fr);
+    gap: 0.15rem 0.9rem;
+    padding: 1rem 0;
+  }
+  .index__n    { grid-row: 1; grid-column: 1; }
+  .index__year { grid-row: 1; grid-column: 2; }
+  .index__kind { grid-row: 1; grid-column: 3; }
+  .index__title { grid-row: 2; grid-column: 2 / -1; }
+  .index__meta  { grid-row: 3; grid-column: 2 / -1; margin-top: 0.15rem; }
+  .index__ext   { grid-row: 1; grid-column: 3; justify-self: end; }
+
+  .news__item { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+
+  /* Too narrow to sit beside the text: the portrait stops floating and
+     stacks above it (it already comes first in source order). */
+  .portrait {
+    float: none;
+    width: 12rem;
+    margin: 0 0 2rem;
+  }
+
+  .index__search { flex: 1 1 100%; }
+  .search-input { text-align: left; }
+
+  /* Below this width the three nav items wrap, which left the theme switch
+     stranded mid-list. Give the list the full row so the switch drops cleanly
+     beneath it. */
+  .nav { padding-block: 0.9rem; row-gap: 0.7rem; }
+  .nav__list { flex: 1 1 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .masthead, .index__bar, .footer, .globe { display: none !important; }
+  body { background: #fff; color: #000; }
+}

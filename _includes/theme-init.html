@@ -1,0 +1,62 @@
+{%- comment -%}
+  Dark/light theme. Inlined into <head> by _includes/head.html rather than
+  linked, because setting data-theme has to happen before first paint -- a
+  linked script would let the wrong theme flash on every load.
+
+  Both palettes live in assets/css/main.scss as custom properties under
+  :root and :root[data-theme="light"], so switching is one attribute flip: no
+  stylesheet swap, no network request. (The previous design needed a
+  build-time plugin for this, because minimal-mistakes baked its colours into
+  compiled Sass -- see docs/superpowers/specs/2026-08-27-theme-css-merge-design.md.)
+
+  The control itself is server-rendered in _includes/masthead.html as two
+  labelled options; this only keeps their checkboxes in sync and binds clicks.
+{%- endcomment -%}
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "theme";
+
+  function stored() {
+    try {
+      var v = localStorage.getItem(STORAGE_KEY);
+      return v === "light" || v === "dark" ? v : null;
+    } catch (e) {
+      return null; // private mode / blocked storage
+    }
+  }
+
+  var theme = stored() ||
+    (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark");
+
+  document.documentElement.setAttribute("data-theme", theme);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var options = Array.prototype.slice.call(document.querySelectorAll(".theme-option"));
+    if (!options.length) return;
+
+    function render() {
+      options.forEach(function (option) {
+        var on = option.dataset.themeChoice === theme;
+        option.setAttribute("aria-pressed", String(on));
+        var box = option.querySelector(".box");
+        if (box) box.textContent = on ? "☒" : "☐";
+      });
+    }
+
+    options.forEach(function (option) {
+      option.addEventListener("click", function () {
+        theme = option.dataset.themeChoice;
+        try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { /* ignore */ }
+        document.documentElement.setAttribute("data-theme", theme);
+        render();
+      });
+    });
+
+    render();
+  });
+})();
+</script>

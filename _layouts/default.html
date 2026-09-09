@@ -1,41 +1,32 @@
 ---
 ---
-
 <!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
-  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+{%- comment -%}
+  data-theme is re-set before first paint by the inlined script in
+  _includes/head.html; "dark" here is the no-JS default and matches the
+  palette on bare :root in assets/css/main.scss.
+{%- endcomment -%}
+<html lang="{{ site.locale | slice: 0,2 | default: 'en' }}" data-theme="dark">
   <head>
-    {% include head.html %}
-    {% include head/custom.html %}
+    {%- include head.html -%}
   </head>
+  <body class="layout--{{ page.layout }}">
+    <a class="skip-link" href="#main">Skip to content</a>
+    {%- include masthead.html -%}
 
-  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
-    {% include_cached skip-links.html %}
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
-
-    <div class="initial-content">
+    <main id="main" class="main">
       {{ content }}
-    </div>
+    </main>
 
-    {% if site.search == true %}
-      <div class="search-content">
-        {% include search/search_form.html %}
-      </div>
-    {% endif %}
+    {%- include footer.html -%}
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
-
-    {% include scripts.html %}
+    {%- comment -%}
+      MathJax only where it is needed: publication and talk titles in
+      _data/*.yml and several posts carry inline \( … \) LaTeX. Layouts that
+      need it set `math: true`; About and CV do not pay for it.
+    {%- endcomment -%}
+    {%- if layout.math or page.math -%}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    {%- endif -%}
   </body>
 </html>

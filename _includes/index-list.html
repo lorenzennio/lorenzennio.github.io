@@ -1,0 +1,113 @@
+{%- comment -%}
+  The index: every paper, talk, project, role and place as one numbered
+  register, built by _plugins/index_builder.rb into site.data.index_entries.
+
+  Place rows are rendered but hidden until the `places` filter is on -- they
+  restate work already listed elsewhere (the LMU place and the postdoc role
+  are the same job), so they would duplicate the default view. They carry
+  their coordinates as data attributes, which is where assets/js/globe.js
+  reads its points from: one source, no ordering mismatch between the list
+  and the sphere.
+{%- endcomment -%}
+{%- assign entries = site.data.index_entries -%}
+{%- assign work = entries | where_exp: "e", "e.kind != 'place'" -%}
+
+<section class="index">
+  <div class="index__bar">
+    <div class="filters" role="group" aria-label="Filter the index by kind">
+    {%- comment -%}
+      Rendered pressed/unpressed server-side so the page is correct before the
+      script runs; index-filter.js takes over from there.
+    {%- endcomment -%}
+    <span class="filters__item"><button type="button" class="chip" data-filter="all" aria-pressed="true">
+      <span class="box" aria-hidden="true">&#9746;</span> All
+    </button></span>
+    {%- assign chips = "paper,Papers|talk,Talks|project,Projects|role,Roles|place,Places" | split: "|" -%}
+    {%- for chip in chips -%}
+      {%- assign parts = chip | split: "," -%}
+      <span class="filters__item"><button type="button" class="chip" data-filter="{{ parts[0] }}" aria-pressed="false">
+        <span class="box" aria-hidden="true">&#9744;</span> {{ parts[1] }}
+      </button></span>
+    {%- endfor -%}
+    </div>
+
+    <div class="index__search">
+      <label class="visually-hidden" for="index-search">Search the index</label>
+      <input type="search" id="index-search" class="search-input"
+             placeholder="Search…" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+
+  <p class="index__count"><span data-index-count>{{ work.size }}</span> entries</p>
+
+  <p class="index__empty" hidden>Nothing matches. <button type="button" class="index__reset">Clear filters</button></p>
+
+  {%- comment -%}
+    three's examples/jsm modules import the bare specifier "three", so a map
+    has to be in the document before assets/js/globe.js is imported. It is
+    inert until then -- declaring it costs nothing.
+  {%- endcomment -%}
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.184.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.184.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <div class="globe" id="globe" hidden data-src="{{ '/assets/js/globe.js' | relative_url }}">
+    <div class="globe__tooltip" id="globe-tooltip"></div>
+    <div class="globe__popup" id="globe-popup">
+      <button type="button" class="gp-close" aria-label="Close">&times;</button>
+      <p class="gp-meta"></p>
+      <p class="gp-title"></p>
+      <p class="gp-body"></p>
+      <a class="gp-link" href="#">Read more</a>
+    </div>
+    <div class="globe__hint">drag to spin &nbsp;·&nbsp; click a point</div>
+  </div>
+
+  <ol class="index__list">
+    {%- for e in entries -%}
+      <li class="index__row"
+          data-kind="{{ e.kind }}"
+          {%- if e.kind == 'place' %} hidden
+          data-lat="{{ e.lat }}" data-lon="{{ e.lon }}"
+          data-title="{{ e.title | escape }}" data-where="{{ e.meta | escape }}"
+          data-body="{{ e.body | escape }}" data-link="{{ e.link }}"{% endif %}>
+
+        {%- comment -%}
+          One element wraps the whole row so the entire strip is the click
+          target: an <a> when there is somewhere to go, a <button> for places
+          (which focus the globe instead), a plain <div> when an entry has no
+          link at all -- rather than an <a href="#"> that goes nowhere.
+        {%- endcomment -%}
+        {%- if e.kind == 'place' -%}
+          <button type="button" class="index__link">
+        {%- elsif e.href -%}
+          <a class="index__link" href="{% if e.external %}{{ e.href }}{% else %}{{ e.href | relative_url }}{% endif %}"{% if e.external %} rel="noopener"{% endif %}>
+        {%- else -%}
+          <div class="index__link">
+        {%- endif -%}
+
+          <span class="index__n">{{ e.n }}</span>
+          <span class="index__year">{{ e.year }}</span>
+          <span class="index__kind">{{ e.label }}</span>
+          <span class="index__title">{{ e.title }}</span>
+          <span class="index__ext" aria-hidden="true">{% if e.external %}&#8599;{% endif %}</span>
+          {%- if e.meta %}<span class="index__meta">{{ e.meta }}</span>{% endif -%}
+
+        {%- if e.kind == 'place' -%}
+          </button>
+        {%- elsif e.href -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ol>
+</section>
+
+<script src="{{ '/assets/js/index-filter.js' | relative_url }}" defer></script>

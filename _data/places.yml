@@ -1,0 +1,91 @@
+# Places shown as PLACE rows in the index and as points on the globe.
+# Single source of truth for both -- the globe reads this via the JSON script
+# tag in _includes/index-list.html (it used to be a hardcoded POINTS array in
+# _pages/map.md). `link` is optional.
+#
+# `date` exists only to place the entry in the index's chronological order --
+# it is NOT displayed. Several are approximate (the original POINTS array
+# carried no dates); correct any that sort wrongly.
+- title: "LMU Munich"
+  where: "Munich, Germany"
+  lat: 48.1372
+  lon: 11.5756
+  date: 2022-01-01
+  body: "Postdoctoral researcher, data analytics and statistics in particle physics. PhD 2025."
+  link: "/cv/"
+
+- title: "MLSS 2026"
+  where: "Tübingen, Germany"
+  lat: 48.5216
+  lon: 9.0576
+  date: 2026-08-30
+  body: "Attending the Machine Learning Summer School."
+  link: "https://mlss2026.is.tuebingen.mpg.de/"
+
+- title: "German Bundestag"
+  where: "Berlin, Germany"
+  lat: 52.5186
+  lon: 13.3761
+  date: 2026-03-01
+  body: "Scientific advisor on energy, economic and technology policy."
+
+- title: "IAEA"
+  where: "Vienna, Austria"
+  lat: 48.2349
+  lon: 16.4166
+  date: 2021-01-01
+  body: "Worked on fission–fusion synergies at the International Atomic Energy Agency."
+  link: "https://conferences.iaea.org/event/285/contributions/22008/attachments/11960/19453/1.00-Virgili.pdf"
+
+- title: "CERN"
+  where: "Geneva, Switzerland"
+  lat: 46.2333
+  lon: 6.0557
+  date: 2024-01-01
+  body: "Taught at the Inverted CERN School of Computing."
+
+- title: "KEK (Belle II)"
+  where: "Tsukuba, Japan"
+  lat: 36.1069
+  lon: 140.0844
+  date: 2024-10-16
+  body: "Belle II StarterKit tutorials and Physics Week talks."
+  link: "https://indico.belle2.org/event/12273/contributions/79673/"
+
+- title: "University of Manchester"
+  where: "Manchester, UK"
+  lat: 53.4808
+  lon: -2.2426
+  date: 2015-01-01
+  body: "BSc Physics. Franz Mandl Prize for best theoretical physics graduate."
+
+- title: "DESY"
+  where: "Hamburg, Germany"
+  lat: 53.5753
+  lon: 9.8790
+  date: 2024-05-01
+  body: "CERN School of Computing and WLCG/HSF workshop talks."
+  link: "https://indico.cern.ch/event/1369601/contributions/5867792/"
+
+- title: "Duke University"
+  where: "Durham, NC, USA"
+  lat: 35.9940
+  lon: -78.8986
+  date: 2023-05-01
+  body: "Belle II Summer Workshop: talk and tutorial."
+  link: "https://indico.belle2.org/event/8841/contributions/63802/"
+
+- title: "IRN Terascale"
+  where: "Marseille, France"
+  lat: 43.2965
+  lon: 5.3698
+  date: 2023-10-01
+  body: "Invited talk on reinterpretation of LHC results."
+  link: "https://indico.in2p3.fr/event/30546/contributions/128802/"
+
+- title: "SLAC National Accelerator Laboratory"
+  where: "Menlo Park, CA, USA"
+  lat: 37.4189
+  lon: -122.2000
+  date: 2019-01-01
+  body: "Scientist / software engineer for astrophysics. Extended the redMaPPer galaxy cluster finder with uncertainty estimation and masking corrections."

@@ -1,0 +1,57 @@
+# Career entries shown as ROLE rows in the index (_plugins/index_builder.rb).
+# Sourced from assets/pdfs/CV.pdf -- keep the two in sync when the CV changes.
+#
+# `date` is the start date and drives the index's newest-first ordering.
+# `years` is an optional display override for the index's year column; without
+# it the column shows the year of `date`. Use it for anything spanning more
+# than one year, so a 2022-2025 PhD doesn't read as a 2022 event.
+- title: "Postdoctoral Researcher — Democratizing statistical models"
+  org: "LMU Munich · BMFTR ErUM-Data project"
+  # Started after the Mar-May 2026 Bundestag stint, so it sorts above it.
+  date: 2026-06-01
+  years: "2026–"
+
+- title: "Scientific Advisor to a Member of the Bundestag"
+  org: "German Parliament, Berlin"
+  date: 2026-03-01
+
+- title: "ErUM-Data project DEMOS — €300,000"
+  org: "Main author of the successful proposal · BMFTR"
+  date: 2025-01-01
+
+- title: "PhD in Physics, summa cum laude"
+  org: "LMU Munich · Accelerating discovery: model-agnostic likelihoods"
+  date: 2025-01-01
+
+- title: "Belle II Early Career Researchers Representative"
+  org: "Elected by peers, 1000+ member collaboration"
+  date: 2024-01-01
+  years: "2024–25"
+
+- title: "PhD Researcher — Accelerating Discovery in Particle Physics"
+  org: "Belle II · LMU Munich"
+  date: 2022-01-01
+  years: "2022–25"
+
+- title: "Applied Researcher & Policy Coordinator"
+  org: "International Atomic Energy Agency, Fast Reactors Team, Vienna"
+  date: 2021-01-01
+  years: "2021–22"
+
+- title: "MSc in Physics — Theoretical & Computational Physics"
+  org: "LMU Munich"
+  date: 2020-01-01
+
+- title: "Franz Mandl Prize"
+  org: "Best BSc theoretical physics graduate, University of Manchester"
+  date: 2018-06-01
+
+- title: "BSc in Physics with Theoretical Physics, First Class"
+  org: "University of Manchester · 1st in cohort"
+  date: 2018-01-01
+  years: "2015–18"
+
+- title: "Research positions — machine learning, simulation, scientific software"
+  org: "Belle II · MPI for Extraterrestrial Physics · SLAC / Stanford"
+  date: 2017-01-01
+  years: "2017–22"
