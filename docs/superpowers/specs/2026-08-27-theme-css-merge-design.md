@@ -1,3 +1,10 @@
+> **Superseded (2026-09-09).** The mechanism described here was removed in the
+> "Index" redesign, which dropped the minimal-mistakes remote theme. That theme
+> baked its colours into compiled Sass, which is why a build-time merge was
+> needed at all; the hand-authored `assets/css/main.scss` declares both palettes
+> as CSS custom properties directly, so `_plugins/theme_css_merge.rb` and its
+> test were deleted. Kept as a record of the earlier design.
+
 # Single-stylesheet theme toggle (merge dark/light CSS into one file)
 
 ## Problem

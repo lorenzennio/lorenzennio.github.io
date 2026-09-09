@@ -1,0 +1,11 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__name">{{ site.author.name }}</p>
+    <ul class="footer__links">
+      {%- for link in site.footer.links -%}
+        <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      {%- endfor -%}
+      <li><a href="{{ '/terms/' | relative_url }}">Impressum &amp; Privacy</a></li>
+    </ul>
+  </div>
+</footer>

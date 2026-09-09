@@ -1,0 +1,66 @@
+{%- comment -%}
+  Dark/light theme toggle. Inlined into <head> by _includes/head.html rather
+  than linked, because setting data-theme has to happen before first paint --
+  a linked script would let the wrong theme flash on every load.
+
+  Both palettes live in assets/css/main.scss as custom properties under
+  :root and [data-theme="light"], so switching is one attribute flip: no
+  stylesheet swap, no network request. (The previous design needed a
+  build-time plugin to achieve this, because minimal-mistakes baked its
+  colours into compiled Sass -- see
+  docs/superpowers/specs/2026-08-27-theme-css-merge-design.md.)
+
+  The button itself is server-rendered in _includes/masthead.html; this only
+  sets its glyph and binds the click.
+{%- endcomment -%}
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "theme";
+  // Filled circle = you are in light; hollow = you are in dark. Same
+  // filled/hollow language as the ☒/☐ checkboxes in the nav and filters.
+  var GLYPH = { dark: "○", light: "●" };
+
+  function stored() {
+    try {
+      var v = localStorage.getItem(STORAGE_KEY);
+      return v === "light" || v === "dark" ? v : null;
+    } catch (e) {
+      return null; // private mode / blocked storage
+    }
+  }
+
+  var theme = stored() ||
+    (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark");
+
+  document.documentElement.setAttribute("data-theme", theme);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var button = document.querySelector(".theme-toggle");
+    if (!button) return;
+
+    function render() {
+      button.textContent = GLYPH[theme];
+      button.setAttribute(
+        "aria-label",
+        "Switch to " + (theme === "dark" ? "light" : "dark") + " theme"
+      );
+      button.setAttribute("aria-pressed", theme === "light");
+    }
+
+    button.addEventListener("click", function () {
+      theme = theme === "light" ? "dark" : "light";
+      try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { /* ignore */ }
+      document.documentElement.setAttribute("data-theme", theme);
+      render();
+      // The globe repaints itself from html[data-theme] when it hears this.
+      document.dispatchEvent(new CustomEvent("themechange", { detail: theme }));
+    });
+
+    render();
+  });
+})();
+</script>

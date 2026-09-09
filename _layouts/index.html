@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<div class="page-head">
+  <span class="kicker">{{ page.kicker }}</span>
+  <h1 class="page-head__title">{{ site.author.name | remove: "Dr. " }}</h1>
+  {%- if page.lede %}<p class="page-head__lede">{{ page.lede | markdownify | remove: "<p>" | remove: "</p>" }}</p>{% endif -%}
+</div>
+
+{% include index-list.html %}

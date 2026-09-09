@@ -2,7 +2,7 @@
 permalink: /terms/
 title: "Impressum & Privacy Policy"
 last_modified_at: 2026-08-20
-toc: true
+layout: page
 ---
 
 ## Impressum
