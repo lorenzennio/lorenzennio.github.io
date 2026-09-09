@@ -527,16 +527,30 @@ a:hover { text-decoration-color: var(--accent); }
 .prose > .project__image { max-width: none; }
 .prose p { text-wrap: pretty; }
 
+/* Section headings. h2 is a real heading -- full contrast, and large enough
+   to be seen before it is read; at label size it disappeared into the row
+   labels around it. Tracking eases off as the size goes up. h3 stays quiet
+   and muted so the two levels remain distinct. */
 .prose h2,
 .prose h3 {
   font-family: var(--font-mono);
-  font-size: var(--t-label);
   font-weight: 500;
   text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
+.prose h2 {
+  font-size: 1.0625rem;
+  letter-spacing: 0.07em;
+  color: var(--fg);
+  margin-top: 3.25em;
+}
+
+.prose h3 {
+  font-size: var(--t-nav);
   letter-spacing: 0.11em;
   color: var(--muted);
   margin-top: 2.75em;
-  margin-bottom: 1em;
 }
 
 .prose ul:not(.news) > li {
