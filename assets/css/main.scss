@@ -602,13 +602,15 @@ a:hover { text-decoration-color: var(--accent); }
   margin-top: 2rem;
 }
 
+/* The photograph at its native 3:4, uncropped -- the Reichstag dome and the
+   sky behind the subject are the reason the picture is worth showing, and a
+   square or circular crop throws both away. Height comes from the intrinsic
+   ratio, so there is nothing to keep in sync if the file is replaced. */
 .portrait {
   float: right;
   margin-left: 2.5rem;
-  width: clamp(5rem, 14vw, 9rem);
-  height: clamp(5rem, 14vw, 9rem);
-  object-fit: cover;
-  border-radius: 50%;
+  width: clamp(9rem, 20vw, 15rem);
+  height: auto;
 }
 
 /* CV embed */
@@ -698,7 +700,8 @@ a:hover { text-decoration-color: var(--accent); }
      stacks above it (it already comes first in source order). */
   .portrait {
     float: none;
-    margin: 0 0 1.75rem;
+    width: 12rem;
+    margin: 0 0 2rem;
   }
 
   .index__search { flex: 1 1 100%; }
