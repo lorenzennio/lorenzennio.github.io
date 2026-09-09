@@ -11,6 +11,9 @@
  *     what you are looking at. That is the point of the whole device.
  *   - Selection lives in the URL hash (#papers,projects) so a filtered view is
  *     linkable and survives a reload.
+ *   - The search box narrows whatever the chips have selected. With no chip
+ *     active it searches places too, so looking for "CERN" finds it without
+ *     having to know it is filed under places.
  */
 (function () {
   "use strict";
@@ -22,6 +25,17 @@
   var rows = Array.prototype.slice.call(root.querySelectorAll(".index__row"));
   var countEl = root.querySelector("[data-index-count]");
   var globeEl = root.querySelector(".globe");
+  var input = root.querySelector(".search-input");
+  var emptyEl = root.querySelector(".index__empty");
+  var resetBtn = root.querySelector(".index__reset");
+
+  // Searchable text is the row's own rendered text -- number, year, category,
+  // title and meta line -- so "2024", "talk" and "Belle II" all work without a
+  // separate index to keep in step with the markup.
+  var haystack = new WeakMap();
+  rows.forEach(function (row) {
+    haystack.set(row, (row.textContent || "").toLowerCase().replace(/\s+/g, " "));
+  });
 
   // Hash uses the plural chip labels; the DOM uses singular kinds.
   var PLURAL = { paper: "papers", talk: "talks", project: "projects", role: "roles", place: "places" };
@@ -32,6 +46,7 @@
   var UNCHECKED = "☐";
 
   var active = readHash();
+  var query = "";
   var globeLoaded = false;
 
   function readHash() {
@@ -51,10 +66,17 @@
     history.replaceState(null, "", window.location.pathname + window.location.search + hash);
   }
 
+  function matches(row) {
+    return query === "" || haystack.get(row).indexOf(query) !== -1;
+  }
+
   function isVisible(row) {
     var kind = row.dataset.kind;
     var none = Object.keys(active).length === 0;
-    return none ? kind !== "place" : !!active[kind];
+    // Places are held back from the default view because they restate work
+    // listed elsewhere -- but a search should still reach them.
+    var kindOk = none ? (kind !== "place" || query !== "") : !!active[kind];
+    return kindOk && matches(row);
   }
 
   function render() {
@@ -79,6 +101,7 @@
     });
 
     if (countEl) countEl.textContent = String(n);
+    if (emptyEl) emptyEl.hidden = n !== 0;
 
     if (globeEl) {
       var wantGlobe = !!active.place;
@@ -141,6 +164,32 @@
       }));
     });
   });
+
+  if (input) {
+    input.addEventListener("input", function () {
+      query = input.value.trim().toLowerCase();
+      render();
+    });
+    // Escape clears the box rather than only clearing the browser's own
+    // search-input affordance, which leaves the list filtered.
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && input.value !== "") {
+        input.value = "";
+        query = "";
+        render();
+      }
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      active = {};
+      query = "";
+      if (input) input.value = "";
+      writeHash();
+      render();
+    });
+  }
 
   window.addEventListener("hashchange", function () {
     active = readHash();

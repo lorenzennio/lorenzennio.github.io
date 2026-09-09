@@ -13,7 +13,8 @@
 {%- assign work = entries | where_exp: "e", "e.kind != 'place'" -%}
 
 <section class="index">
-  <div class="filters" role="group" aria-label="Filter the index by kind">
+  <div class="index__bar">
+    <div class="filters" role="group" aria-label="Filter the index by kind">
     {%- comment -%}
       Rendered pressed/unpressed server-side so the page is correct before the
       script runs; index-filter.js takes over from there.
@@ -28,9 +29,18 @@
         <span class="box" aria-hidden="true">&#9744;</span> {{ parts[1] }}
       </button>
     {%- endfor -%}
+    </div>
+
+    <div class="index__search">
+      <label class="visually-hidden" for="index-search">Search the index</label>
+      <input type="search" id="index-search" class="search-input"
+             placeholder="Search…" autocomplete="off" spellcheck="false">
+    </div>
   </div>
 
   <p class="index__count"><span data-index-count>{{ work.size }}</span> entries</p>
+
+  <p class="index__empty" hidden>Nothing matches. <button type="button" class="index__reset">Clear filters</button></p>
 
   {%- comment -%}
     three's examples/jsm modules import the bare specifier "three", so a map

@@ -41,7 +41,8 @@
   --page:    76rem;     /* outer content width */
   --gutter:  clamp(1.25rem, 4vw, 3rem);
 
-  --t-label: 0.6875rem; /* mono labels: years, categories, nav */
+  --t-nav:   0.875rem;  /* mono controls: nav, filter chips, theme, search */
+  --t-label: 0.75rem;   /* mono labels inside rows: number, year, category */
   --t-meta:  0.8125rem; /* mono second lines */
   --t-body:  1rem;
   --t-row:   1.0625rem; /* index row titles */
@@ -128,8 +129,6 @@ a:hover { text-decoration-color: var(--accent); }
 
 /* Uppercase + tracking is what makes the mono read as a label rather than as
    code. Applied only to the true labels, never to running text. */
-.nav__link,
-.chip,
 .index__kind,
 .index__count,
 .kicker,
@@ -139,10 +138,20 @@ a:hover { text-decoration-color: var(--accent); }
   font-size: var(--t-label);
 }
 
+/* The controls -- nav, filters, theme -- are the site's operating surface, so
+   they are a step larger than the labels inside the rows. */
+.nav__link,
+.chip,
+.theme-option {
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: var(--t-nav);
+}
+
 /* The ☒/☐ glyph. Sized down and nudged so it optically aligns with the
    uppercase label beside it rather than sitting high. */
 .box {
-  font-size: 1.15em;
+  font-size: 1.3em;
   line-height: 1;
   position: relative;
   top: 0.06em;
@@ -160,6 +169,7 @@ a:hover { text-decoration-color: var(--accent); }
 
 .nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -183,15 +193,22 @@ a:hover { text-decoration-color: var(--accent); }
 .nav__link:hover { color: var(--fg); }
 .nav__link.is-current { color: var(--fg); }
 
-.theme-toggle {
+.theme-switch {
+  display: flex;
+  gap: 1.1rem;
+  flex-shrink: 0;
+}
+
+.theme-option {
+  font-family: var(--font-mono);
   cursor: pointer;
-  font-size: 0.8rem;
-  line-height: 1;
-  padding: 0.4rem;
+  white-space: nowrap;
+  padding: 0.2rem 0;
   color: var(--muted);
   transition: color 0.15s ease;
 }
-.theme-toggle:hover { color: var(--accent); }
+.theme-option:hover { color: var(--fg); }
+.theme-option[aria-pressed="true"] { color: var(--fg); }
 
 /* --- Page frame ----------------------------------------------------------- */
 .main {
@@ -225,12 +242,23 @@ a:hover { text-decoration-color: var(--accent); }
 }
 
 /* --- Index: filters ------------------------------------------------------- */
+/* Filters left, search flush right, sharing one rule beneath them. */
+.index__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem 2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule-strong);
+  transition: border-color 0.15s ease;
+}
+.index__bar:focus-within { border-bottom-color: var(--accent); }
+
 .filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 1.4rem;
-  padding-bottom: 1.1rem;
-  border-bottom: 1px solid var(--rule-strong);
 }
 
 .chip {
@@ -245,6 +273,55 @@ a:hover { text-decoration-color: var(--accent); }
 .index__count {
   color: var(--muted);
   margin: 1.1rem 0 0;
+}
+
+.index__search { flex: 0 1 18rem; }
+
+.search-input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--t-nav);
+  color: var(--fg);
+  background: none;
+  border: 0;
+  border: 0;
+  padding: 0.1rem;
+  text-align: right;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search-input::placeholder { color: var(--muted); }
+.search-input:focus { outline: none; }
+.search-input:focus-visible { outline: none; }
+/* Safari draws its own clear button; it does not match anything else here. */
+.search-input::-webkit-search-decoration,
+.search-input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.index__empty {
+  font-family: var(--font-mono);
+  font-size: var(--t-nav);
+  color: var(--muted);
+  margin: 2.5rem 0;
+}
+.index__reset {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* --- Index: rows ---------------------------------------------------------
@@ -312,9 +389,9 @@ a:hover { text-decoration-color: var(--accent); }
 .globe {
   position: relative;
   width: 100%;
-  height: min(62vh, 560px);
-  min-height: 340px;
-  margin: 1.75rem 0 0.5rem;
+  height: min(42vh, 380px);
+  min-height: 260px;
+  margin: 1.5rem 0 0.5rem;
   background: var(--bg);
   border: 1px solid var(--rule);
   overflow: hidden;
@@ -584,7 +661,14 @@ a:hover { text-decoration-color: var(--accent); }
 
   .news__item { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
 
-  .nav { padding-block: 0.9rem; }
+  .index__search { flex: 1 1 100%; }
+  .search-input { text-align: left; }
+
+  /* Below this width the three nav items wrap, which left the theme switch
+     stranded mid-list. Give the list the full row so the switch drops cleanly
+     beneath it. */
+  .nav { padding-block: 0.9rem; row-gap: 0.7rem; }
+  .nav__list { flex: 1 1 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -597,6 +681,6 @@ a:hover { text-decoration-color: var(--accent); }
 }
 
 @media print {
-  .masthead, .filters, .footer, .globe, .theme-toggle { display: none !important; }
+  .masthead, .index__bar, .footer, .globe { display: none !important; }
   body { background: #fff; color: #000; }
 }

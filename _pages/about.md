@@ -1,6 +1,6 @@
 ---
-permalink: /about/
-title: "About"
+permalink: /
+title: "Lorenz Gärtner"
 layout: page
 math: true
 ---

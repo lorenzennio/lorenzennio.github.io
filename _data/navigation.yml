@@ -1,9 +1,9 @@
 # Masthead links. Order is the order they render; the ☒/☐ glyph marking the
 # current page is added in _includes/masthead.html.
 main:
-  - title: "Index"
-    url: /
   - title: "About"
-    url: /about/
+    url: /
+  - title: "Index"
+    url: /index/
   - title: "CV"
     url: /cv/
