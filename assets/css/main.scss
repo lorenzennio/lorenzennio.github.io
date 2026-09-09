@@ -248,14 +248,10 @@ a:hover { text-decoration-color: var(--accent); }
 
 .page-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 
-/* Name left, portrait flush right, sharing a baseline-ish centre. */
-.page-head--portrait {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-.page-head__text { min-width: 0; }
+/* Floated, not a flex column: the portrait only reserves width alongside the
+   intro paragraphs it sits next to. Anything further down the page -- the
+   News list -- runs the full width beneath it. */
+.page-body::after { content: ""; display: table; clear: both; }
 
 .page-head__title {
   font-size: var(--t-head);
@@ -607,7 +603,8 @@ a:hover { text-decoration-color: var(--accent); }
 }
 
 .portrait {
-  flex: 0 0 auto;
+  float: right;
+  margin-left: 2.5rem;
   width: clamp(5rem, 14vw, 9rem);
   height: clamp(5rem, 14vw, 9rem);
   object-fit: cover;
@@ -696,6 +693,13 @@ a:hover { text-decoration-color: var(--accent); }
   .index__ext   { grid-row: 1; grid-column: 3; justify-self: end; }
 
   .news__item { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+
+  /* Too narrow to sit beside the text: the portrait stops floating and
+     stacks above it (it already comes first in source order). */
+  .portrait {
+    float: none;
+    margin: 0 0 1.75rem;
+  }
 
   .index__search { flex: 1 1 100%; }
   .search-input { text-align: left; }
