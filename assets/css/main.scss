@@ -611,8 +611,6 @@ a:hover { text-decoration-color: var(--accent); }
   width: clamp(5rem, 14vw, 9rem);
   height: clamp(5rem, 14vw, 9rem);
   object-fit: cover;
-  border: 1px solid var(--accent);
-  padding: 0.25rem;
   border-radius: 50%;
 }
 
