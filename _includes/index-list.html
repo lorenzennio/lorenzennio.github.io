@@ -19,15 +19,15 @@
       Rendered pressed/unpressed server-side so the page is correct before the
       script runs; index-filter.js takes over from there.
     {%- endcomment -%}
-    <button type="button" class="chip" data-filter="all" aria-pressed="true">
-      <span class="box" aria-hidden="true">&#9746;</span> all
-    </button>
-    {%- assign chips = "paper,papers|talk,talks|project,projects|role,roles|place,places" | split: "|" -%}
+    <span class="filters__item"><button type="button" class="chip" data-filter="all" aria-pressed="true">
+      <span class="box" aria-hidden="true">&#9746;</span> All
+    </button></span>
+    {%- assign chips = "paper,Papers|talk,Talks|project,Projects|role,Roles|place,Places" | split: "|" -%}
     {%- for chip in chips -%}
       {%- assign parts = chip | split: "," -%}
-      <button type="button" class="chip" data-filter="{{ parts[0] }}" aria-pressed="false">
+      <span class="filters__item"><button type="button" class="chip" data-filter="{{ parts[0] }}" aria-pressed="false">
         <span class="box" aria-hidden="true">&#9744;</span> {{ parts[1] }}
-      </button>
+      </button></span>
     {%- endfor -%}
     </div>
 

@@ -2,10 +2,9 @@
 permalink: /
 title: "Lorenz Gärtner"
 layout: page
+portrait: true
 math: true
 ---
-
-<img class="portrait" src="{{ site.author.avatar | relative_url }}" alt="Lorenz Gärtner">
 
 I currently work on **data analytics methods and statistics in particle physics**. My research focusses on [accelerating science](https://arxiv.org/abs/2606.22215), bringing us new breakthroughs faster.
 

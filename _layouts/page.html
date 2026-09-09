@@ -1,9 +1,21 @@
 ---
 layout: default
 ---
-<div class="page-head">
-  {%- if page.title %}<h1 class="page-head__title">{{ page.title }}</h1>{% endif -%}
-  {%- if page.lede %}<p class="page-head__lede">{{ page.lede }}</p>{% endif -%}
+<div class="page-head{% if page.portrait %} page-head--portrait{% endif %}">
+  <div class="page-head__text">
+    {%- if page.title %}<h1 class="page-head__title">{{ page.title }}</h1>{% endif -%}
+    {%- if page.lede %}<p class="page-head__lede">{{ page.lede }}</p>{% endif -%}
+  </div>
+
+  {%- comment -%}
+    The portrait belongs to the page header, not to the prose: it sits beside
+    the name rather than above the first paragraph. Set `portrait: true` in a
+    page's front matter to show it.
+  {%- endcomment -%}
+  {%- if page.portrait %}
+    <img class="portrait" src="{{ site.author.avatar | relative_url }}"
+         alt="{{ site.author.name }}" width="150" height="150">
+  {% endif -%}
 </div>
 
 <div class="prose{% if page.wide %} prose--wide{% endif %}">

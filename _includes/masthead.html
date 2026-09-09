@@ -26,12 +26,14 @@
       infer either. theme-init.html keeps the boxes in sync.
     {%- endcomment -%}
     <div class="theme-switch" role="group" aria-label="Colour theme">
-      <button type="button" class="theme-option" data-theme-choice="dark" aria-pressed="true">
+      <span class="theme-switch__item"><button type="button" class="theme-option" data-theme-choice="dark" aria-pressed="true">
         <span class="box" aria-hidden="true">&#9746;</span> Dark
-      </button>
-      <button type="button" class="theme-option" data-theme-choice="light" aria-pressed="false">
+
+      </button></span>
+      <span class="theme-switch__item"><button type="button" class="theme-option" data-theme-choice="light" aria-pressed="false">
         <span class="box" aria-hidden="true">&#9744;</span> Light
-      </button>
+
+      </button></span>
     </div>
   </nav>
 </header>

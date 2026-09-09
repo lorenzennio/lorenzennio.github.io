@@ -131,31 +131,61 @@ a:hover { text-decoration-color: var(--accent); }
    code. Applied only to the true labels, never to running text. */
 .index__kind,
 .index__count,
-.kicker,
-.footer__links {
+.kicker {
   text-transform: uppercase;
   letter-spacing: 0.11em;
   font-size: var(--t-label);
 }
 
-/* The controls -- nav, filters, theme -- are the site's operating surface, so
-   they are a step larger than the labels inside the rows. */
+/* The controls -- nav, filters, theme, footer -- are the site's operating
+   surface, so they are a step larger than the labels inside the rows. They
+   are set in title case, not caps: the ☒/☐ box already marks state, so the
+   label does not need to shout as well. Tracking drops with the caps, since
+   0.11em is what makes uppercase mono legible and what makes title-case mono
+   look loose. */
 .nav__link,
 .chip,
-.theme-option {
-  text-transform: uppercase;
-  letter-spacing: 0.11em;
+.theme-option,
+.footer__links {
+  letter-spacing: 0.02em;
   font-size: var(--t-nav);
 }
 
-/* The ☒/☐ glyph. Sized down and nudged so it optically aligns with the
-   uppercase label beside it rather than sitting high. */
+.footer__links { font-size: var(--t-meta); }
+
+/* The ☒/☐ glyph. Set well above its label -- it is the site's one recurring
+   mark, and at label size it reads as punctuation rather than as a control.
+   Nudged down so it sits on the label's optical centre rather than high. */
 .box {
-  font-size: 1.3em;
+  font-size: 1.55em;
   line-height: 1;
   position: relative;
-  top: 0.06em;
-  margin-right: 0.15em;
+  top: 0.08em;
+  margin-right: 0.2em;
+}
+
+/* Menu items are separated by a slash. It lives on the wrapper, not inside
+   the control, so it is neither part of the click target nor caught by the
+   control's hover colour -- and it is set in the rule colour so it recedes
+   behind the labels it divides. */
+.nav__item,
+.filters__item,
+.theme-switch__item,
+.footer__links > li {
+  display: flex;
+  align-items: baseline;
+}
+
+.nav__item:not(:last-child)::after,
+.filters__item:not(:last-child)::after,
+.theme-switch__item:not(:last-child)::after,
+.footer__links > li:not(:last-child)::after {
+  content: "/";
+  font-family: var(--font-mono);
+  color: var(--rule-strong);
+  /* Margins, not spaces in `content`: the ::after is its own flex item, so
+     leading and trailing whitespace in the string is trimmed away. */
+  margin: 0 0.55em;
 }
 
 /* --- Masthead ------------------------------------------------------------- */
@@ -181,7 +211,7 @@ a:hover { text-decoration-color: var(--accent); }
 .nav__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1.6rem;
+  gap: 0.35rem 0;
 }
 
 .nav__link {
@@ -195,7 +225,6 @@ a:hover { text-decoration-color: var(--accent); }
 
 .theme-switch {
   display: flex;
-  gap: 1.1rem;
   flex-shrink: 0;
 }
 
@@ -218,6 +247,15 @@ a:hover { text-decoration-color: var(--accent); }
 }
 
 .page-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+
+/* Name left, portrait flush right, sharing a baseline-ish centre. */
+.page-head--portrait {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.page-head__text { min-width: 0; }
 
 .page-head__title {
   font-size: var(--t-head);
@@ -258,7 +296,7 @@ a:hover { text-decoration-color: var(--accent); }
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1.4rem;
+  gap: 0.35rem 0;
 }
 
 .chip {
@@ -569,13 +607,13 @@ a:hover { text-decoration-color: var(--accent); }
 }
 
 .portrait {
-  width: 8.5rem;
-  height: 8.5rem;
+  flex: 0 0 auto;
+  width: clamp(5rem, 14vw, 9rem);
+  height: clamp(5rem, 14vw, 9rem);
   object-fit: cover;
   border: 1px solid var(--accent);
   padding: 0.25rem;
   border-radius: 50%;
-  margin-bottom: 2rem;
 }
 
 /* CV embed */
@@ -635,7 +673,7 @@ a:hover { text-decoration-color: var(--accent); }
 .footer__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 1.4rem;
+  gap: 0.4rem 0;
 }
 .footer__links a { text-decoration: none; }
 .footer__links a:hover { color: var(--accent); }
