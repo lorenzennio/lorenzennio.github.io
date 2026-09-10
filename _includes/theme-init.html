@@ -9,14 +9,21 @@
   build-time plugin for this, because minimal-mistakes baked its colours into
   compiled Sass -- see docs/superpowers/specs/2026-08-27-theme-css-merge-design.md.)
 
-  The control itself is server-rendered in _includes/masthead.html as two
-  labelled options; this only keeps their checkboxes in sync and binds clicks.
+  The control itself is server-rendered in _includes/masthead.html as a
+  single sun/moon button; this keeps its icon and label in sync and binds
+  the click that flips the theme.
+
+  It also keeps <meta name="theme-color"> in sync with --bg: mobile Safari
+  otherwise infers the UI-chrome tint from the page background itself, and
+  can land on a blend of the SSR default and the flipped-to theme (see the
+  comment on that meta tag in head.html).
 {%- endcomment -%}
 <script>
 (function () {
   "use strict";
 
   var STORAGE_KEY = "theme";
+  var BG = { dark: "#08172E", light: "#DDD8B8" };
 
   function stored() {
     try {
@@ -32,28 +39,31 @@
       ? "light"
       : "dark");
 
+  function applyThemeColor(t) {
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", BG[t]);
+  }
+
   document.documentElement.setAttribute("data-theme", theme);
+  applyThemeColor(theme);
 
   document.addEventListener("DOMContentLoaded", function () {
-    var options = Array.prototype.slice.call(document.querySelectorAll(".theme-option"));
-    if (!options.length) return;
+    var toggle = document.querySelector(".theme-toggle");
+    if (!toggle) return;
+    var icon = toggle.querySelector(".theme-toggle__icon");
 
     function render() {
-      options.forEach(function (option) {
-        var on = option.dataset.themeChoice === theme;
-        option.setAttribute("aria-pressed", String(on));
-        var box = option.querySelector(".box");
-        if (box) box.textContent = on ? "☒" : "☐";
-      });
+      var next = theme === "dark" ? "light" : "dark";
+      if (icon) icon.textContent = theme === "dark" ? "☀" : "☾";
+      toggle.setAttribute("aria-label", "Switch to " + next + " theme");
     }
 
-    options.forEach(function (option) {
-      option.addEventListener("click", function () {
-        theme = option.dataset.themeChoice;
-        try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { /* ignore */ }
-        document.documentElement.setAttribute("data-theme", theme);
-        render();
-      });
+    toggle.addEventListener("click", function () {
+      theme = theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { /* ignore */ }
+      document.documentElement.setAttribute("data-theme", theme);
+      applyThemeColor(theme);
+      render();
     });
 
     render();

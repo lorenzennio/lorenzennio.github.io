@@ -150,7 +150,6 @@ a:hover { text-decoration-color: var(--accent); }
    look loose. */
 .nav__link,
 .chip,
-.theme-option,
 .footer__links {
   letter-spacing: 0.02em;
   font-size: var(--t-nav);
@@ -175,7 +174,6 @@ a:hover { text-decoration-color: var(--accent); }
    behind the labels it divides. */
 .nav__item,
 .filters__item,
-.theme-switch__item,
 .footer__links > li {
   display: flex;
   align-items: baseline;
@@ -183,7 +181,6 @@ a:hover { text-decoration-color: var(--accent); }
 
 .nav__item:not(:last-child)::after,
 .filters__item:not(:last-child)::after,
-.theme-switch__item:not(:last-child)::after,
 .footer__links > li:not(:last-child)::after {
   content: "/";
   font-family: var(--font-mono);
@@ -228,21 +225,25 @@ a:hover { text-decoration-color: var(--accent); }
 .nav__link:hover { color: var(--fg); }
 .nav__link.is-current { color: var(--fg); }
 
-.theme-switch {
+/* Icon-only, so the hit target comes from padding rather than a label; the
+   matching negative margin keeps the icon itself aligned with the nav row
+   instead of visually enlarging the gap next to it. */
+.theme-toggle {
   display: flex;
   flex-shrink: 0;
-}
-
-.theme-option {
-  font-family: var(--font-mono);
+  align-items: center;
+  padding: 0.5rem;
+  margin: -0.5rem;
   cursor: pointer;
-  white-space: nowrap;
-  padding: 0.2rem 0;
   color: var(--muted);
   transition: color 0.15s ease;
 }
-.theme-option:hover { color: var(--fg); }
-.theme-option[aria-pressed="true"] { color: var(--fg); }
+.theme-toggle:hover { color: var(--fg); }
+
+.theme-toggle__icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
 
 /* --- Page frame ----------------------------------------------------------- */
 .main {
