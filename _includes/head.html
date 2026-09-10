@@ -37,6 +37,19 @@
 {%- endif %}
 
 <link rel="icon" href="{{ '/assets/images/plogol2.png' | relative_url }}">
+{%- comment -%}
+  Without this, mobile Safari infers the UI-chrome (status/tab bar) tint
+  itself from the page background -- and on a static multi-page site the
+  <html> element briefly carries its SSR data-theme="dark" default on every
+  navigation before theme-init.html's inline script flips it to the stored
+  choice. Safari's inference can land on a blend of the two backgrounds
+  (navy #08172E and cream #DDD8B8 average to a dark, faintly green grey),
+  which reads as the "dark green" seen after switching to light and paging
+  through the site. Pinning the value explicitly removes the guesswork;
+  theme-init.html keeps it in sync with data-theme the same way it keeps
+  data-theme itself in sync.
+{%- endcomment -%}
+<meta name="theme-color" content="#08172E">
 {%- feed_meta %}
 
 {%- comment -%}

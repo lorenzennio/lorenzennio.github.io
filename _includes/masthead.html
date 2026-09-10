@@ -1,7 +1,7 @@
 {%- comment -%}
-  Three items, each carrying a checkbox that marks the current page. The same
-  ☒/☐ glyph marks the active filters on the index and the chosen colour theme
-  -- one visual language for "what you are looking at", everywhere.
+  Nav items each carry a checkbox that marks the current page -- the same
+  ☒/☐ glyph marks the active filters on the index, "what you are looking at"
+  everywhere except the theme control, which is a single sun/moon toggle.
 {%- endcomment -%}
 <header class="masthead">
   <nav class="nav" aria-label="Main">
@@ -21,19 +21,15 @@
     </ul>
 
     {%- comment -%}
-      A labelled two-state control rather than a single glyph: it says which
-      theme is on and what the other option is, without the reader having to
-      infer either. theme-init.html keeps the boxes in sync.
+      Single icon button rather than a labelled pair: the glyph names the
+      action -- sun while dark (tap for daylight), moon while light (tap for
+      night) -- and the label spells the same action out. Markup here matches
+      the SSR data-theme="dark" default in _layouts/default.html;
+      theme-init.html keeps both in sync with the actual theme from first
+      paint onward.
     {%- endcomment -%}
-    <div class="theme-switch" role="group" aria-label="Colour theme">
-      <span class="theme-switch__item"><button type="button" class="theme-option" data-theme-choice="dark" aria-pressed="true">
-        <span class="box" aria-hidden="true">&#9746;</span> Dark
-
-      </button></span>
-      <span class="theme-switch__item"><button type="button" class="theme-option" data-theme-choice="light" aria-pressed="false">
-        <span class="box" aria-hidden="true">&#9744;</span> Light
-
-      </button></span>
-    </div>
+    <button type="button" class="theme-toggle" aria-label="Switch to light theme">
+      <span class="theme-toggle__icon" aria-hidden="true">&#9728;</span>
+    </button>
   </nav>
 </header>
