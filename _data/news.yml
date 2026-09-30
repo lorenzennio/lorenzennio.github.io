@@ -2,6 +2,9 @@
 # Add new items to the top of this list. `text` may contain inline <a>
 # links on just the relevant phrase (not the whole entry) -- see
 # _pages/home.md for how this is rendered.
+- date: 2026-09-01
+  text: 'Presented a <a href="/assets/pdfs/mlss2026-poster.pdf">poster</a> on particle physics and reinterpretation with model-agnostic likelihoods at MLSS, Tübingen.'
+
 - date: 2026-08-30
   text: 'Will be at <a href="https://mlss2026.is.tuebingen.mpg.de/">MLSS</a> in Tübingen! Come and say hi!'
 
