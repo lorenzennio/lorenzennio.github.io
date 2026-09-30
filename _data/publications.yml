@@ -1,5 +1,11 @@
 # Publications shown on the publications & talks page, newest first.
 # Sourced from /home/lorenz/work/CV/references.bib.
+- title: 'Measurements of electroweak penguin \(B\) decays with missing energy at Belle and Belle II'
+  authors: "L. Gärtner (for the Belle II Collaboration)"
+  venue: "arXiv:2609.37146"
+  date: 2026-09-01
+  link: "https://arxiv.org/abs/2609.37146"
+
 - title: 'Joint LHCb–Belle II prospects to constrain new physics in \(B\to D^{(*)}\tau\nu\)'
   authors: "J. Albrecht, F. Bernlochner, M. Colonna, L. Gärtner, A. Mathad, B. Mitreska, M. Prim, I. Tsaklidis"
   venue: "Eur. Phys. J. C 86, 718"
