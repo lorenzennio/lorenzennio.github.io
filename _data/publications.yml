@@ -1,8 +1,14 @@
 # Publications shown on the publications & talks page, newest first.
 # Sourced from /home/lorenz/work/CV/references.bib.
+- title: "EOS version 1.1: A Software for Flavor Physics Phenomenology"
+  authors: "N. C. Balz et al. (EOS Authors)"
+  venue: "arXiv:2610.03322"
+  date: 2026-10-01
+  link: "https://arxiv.org/abs/2610.03322"
+
 - title: 'Measurements of electroweak penguin \(B\) decays with missing energy at Belle and Belle II'
   authors: "L. Gärtner (for the Belle II Collaboration)"
-  venue: "arXiv:2609.37146"
+  venue: "ICHEP 2026 proceedings, arXiv:2609.37146"
   date: 2026-09-01
   link: "https://arxiv.org/abs/2609.37146"
 
