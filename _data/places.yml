@@ -22,12 +22,72 @@
   body: "Attending the Machine Learning Summer School."
   link: "https://mlss2026.is.tuebingen.mpg.de/"
 
+- title: "ICHEP 2026"
+  where: "Natal, Brazil"
+  lat: -5.8054
+  lon: -35.2081
+  date: 2026-08-01
+  body: "Talk on electroweak penguin B decays with missing energy at Belle and Belle II."
+  link: "https://indico.cern.ch/event/1522800/contributions/6982707/"
+
 - title: "German Bundestag"
   where: "Berlin, Germany"
   lat: 52.5186
   lon: 13.3761
   date: 2026-03-01
   body: "Scientific advisor on energy, economic and technology policy."
+
+- title: "University of Bonn"
+  where: "Bonn, Germany"
+  lat: 50.7338
+  lon: 7.1022
+  date: 2025-09-09
+  body: "Belle II Germany Meeting 2025: talk on the reinterpretation of B → Kνν̄."
+  link: "https://indico.belle2.org/event/14576/contributions/98735/"
+
+- title: "RWTH Aachen"
+  where: "Aachen, Germany"
+  lat: 50.7792
+  lon: 6.0689
+  date: 2024-08-01
+  body: "Fast and Efficient Python Programming School."
+
+- title: "Belle II Academy"
+  where: "Murnau, Germany"
+  lat: 47.6779
+  lon: 11.2012
+  date: 2024-05-01
+  body: "Taught at the Belle II Academy."
+
+- title: "KIT"
+  where: "Karlsruhe, Germany"
+  lat: 49.0089
+  lon: 8.4171
+  date: 2023-09-25
+  body: "Belle II Germany Meeting 2023: talk on a model-independent likelihood for Belle II B⁺ → K⁺νν̄."
+  link: "https://indico.belle2.org/event/8188/contributions/63706/"
+
+- title: "Herbstschule Maria Laach"
+  where: "Maria Laach, Germany"
+  lat: 50.4031
+  lon: 7.2524
+  date: 2023-09-01
+  body: "Attended the Maria Laach autumn school on high-energy physics."
+
+- title: "IPPP Durham"
+  where: "Durham, UK"
+  lat: 54.7672
+  lon: -1.5722
+  date: 2023-08-30
+  body: "Talk at the \"(Re)interpretation of the LHC results for new physics\" workshop."
+  link: "https://conference.ippp.dur.ac.uk/event/1178/contributions/6443/"
+
+- title: "MPI for Extraterrestrial Physics"
+  where: "Garching, Germany"
+  lat: 48.2617
+  lon: 11.6718
+  date: 2023-03-01
+  body: "Research position in machine learning and simulation; IMPRS/Origins Data Science Block Course."
 
 - title: "IAEA"
   where: "Vienna, Austria"
@@ -41,7 +101,7 @@
   where: "Geneva, Switzerland"
   lat: 46.2333
   lon: 6.0557
-  date: 2024-01-01
+  date: 2025-03-01
   body: "Taught at the Inverted CERN School of Computing."
 
 - title: "KEK (Belle II)"
