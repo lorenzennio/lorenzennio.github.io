@@ -100,6 +100,13 @@ class IndexBuilderTest < Minitest::Test
     assert_equal %w[garbage undated], entries.drop(1).map { |e| e["title"] }
   end
 
+  def test_publication_summary_is_appended_to_meta_only_when_present
+    pub = { "title" => "t", "venue" => "V", "authors" => "A. One" }
+    assert_equal "V · A. One", IndexBuilder.from_publication(pub)["meta"]
+    assert_equal "V · A. One · Says X.",
+                 IndexBuilder.from_publication(pub.merge("summary" => "Says X."))["meta"]
+  end
+
   def test_posts_are_projects_not_code_several_are_theses_or_write_ups
     assert_equal "project", IndexBuilder.from_post("title" => "t")["kind"]
     assert_equal "PROJECT", IndexBuilder.from_post("title" => "t")["label"]

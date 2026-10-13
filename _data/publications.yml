@@ -1,5 +1,13 @@
 # Publications shown on the publications & talks page, newest first.
 # Sourced from /home/lorenz/work/CV/references.bib.
+# `summary` is optional and shown after venue and authors in the index.
+- title: "Wachstum unter Hochspannung"
+  authors: "L. Rohwer MdB (drafted by L. Gärtner as scientific advisor)"
+  venue: "Tagesspiegel Background Energie & Klima, Standpunkt"
+  date: 2026-10-13
+  link: "https://background.tagesspiegel.de/energie-und-klima/briefing/wachstum-unter-hochspannung"
+  summary: "Op-ed making the case for cutting Germany's electricity tax to the EU minimum as a growth and electrification policy."
+
 - title: "EOS version 1.1: A Software for Flavor Physics Phenomenology"
   authors: "N. C. Balz et al. (EOS Authors)"
   venue: "arXiv:2610.03322"

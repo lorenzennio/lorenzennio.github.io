@@ -119,12 +119,14 @@ module IndexBuilder
     epoch(date).zero? ? "" : Time.at(epoch(date)).utc.year.to_s
   end
 
+  # `summary` is optional: a one-line description for entries whose venue and
+  # authors alone don't say what the piece is (e.g. a newspaper op-ed).
   def from_publication(pub)
     entry(
       kind:  "paper",
       date:  pub["date"],
       title: pub["title"],
-      meta:  join_meta(pub["venue"], short_authors(pub["authors"])),
+      meta:  join_meta(pub["venue"], short_authors(pub["authors"]), pub["summary"]),
       href:  pub["link"]
     )
   end
